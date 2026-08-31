@@ -1,0 +1,67 @@
+.button-container {
+  min-width: 145px;
+  height: 50px;
+  padding: 0 0px;
+  gap: 0px;
+  font-size: 15px;
+  background: linear-gradient(135deg, #40675d, #122619); // emerald gradient
+  color: #fff;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+
+  img.google-icon {
+    width: 33px;
+    height: 33px;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, #2f4f4f, #50c878); // slate → emerald hover
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(80,200,120,0.4); // emerald glow
+  }
+
+  &:active {
+    transform: scale(0.97); // subtle press effect
+    box-shadow: 0 3px 8px rgba(80,200,120,0.3);
+  }
+
+  &.google-sign-in {
+    background: #d4d6d9; // Google blue
+    color: rgb(2, 52, 2);
+    width:160px;
+    display: flex;
+    justify-items: space-between;
+    text-align: left;
+
+    img.google-icon {
+      margin-right: 8px;
+    }
+
+    &:hover {
+      background: #357ae8;
+      box-shadow: 0 6px 15px rgba(53,122,232,0.4);
+      color:white;
+    }
+  }
+
+  &.inverted {
+    background-color: transparent;
+    color: #50c878;
+    border: 2px solid #50c878;
+
+    &:hover {
+      background-color: #50c878;
+      color: #111;
+      border: none;
+      box-shadow: 0 6px 15px rgba(80,200,120,0.4);
+    }
+  }
+}
