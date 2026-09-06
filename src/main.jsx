@@ -9,14 +9,14 @@ import { CartProvider } from "./contexts/cart.context";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+  <CartProvider>
     <BrowserRouter>
       <UserProvider>
         <ProductsProvider>
-          <CartProvider>
             <App />
-          </CartProvider>
         </ProductsProvider>
       </UserProvider>
     </BrowserRouter>
+  </CartProvider>
   </React.StrictMode>
 );
