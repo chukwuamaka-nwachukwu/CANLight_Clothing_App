@@ -26,7 +26,7 @@
     gap: 8px;
     text-decoration: none;
     font-size: 10px;
-    color: rgb(148, 211, 148);
+    color: rgb(179, 202, 179);
 
     
   }
@@ -34,6 +34,7 @@
   h1 {
     filter: drop-shadow(0 0 20px white);
     margin-top: 10px;
+    
   }
   .nav-links-container {
     width: 50%;
@@ -50,7 +51,7 @@
       cursor: pointer;
       font-size: 23px;
       text-decoration: none;
-      color: #62856e;
+      color: rgb(157, 195, 157);
       font-weight: 600;
       transition: color 0.3s ease;
       
@@ -98,4 +99,20 @@ body{
 *{
     box-sizing: border-box;
     
+}
+.username {
+  margin-right: 30px;
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 10px;
+  color:#a3aca3;
+}
+
+.signed-out-message {
+  margin-left: 15px;
+  margin-bottom: 12px;
+  margin-right:50px;
+  font-style: italic;
+  color: #f41f18; /* red for signed out */
+  font-size: 20px;
 }

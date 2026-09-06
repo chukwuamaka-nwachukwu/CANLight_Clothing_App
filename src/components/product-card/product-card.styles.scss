@@ -1,0 +1,74 @@
+.product-card-container {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(6px);
+
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+  }
+
+  img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover img {
+    opacity: 0.9;
+  }
+
+  .footer {
+    width: 100%;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #c8e6c9;
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: 0.5px;
+
+    .name {
+      flex: 1;
+      text-align: left;
+    }
+
+    .price {
+      text-align: right;
+      color: #81c784;
+      font-weight: 700;
+    }
+  }
+
+  button {
+    margin: 16px 0;
+    width: 85%;
+    background-color: transparent;
+    border: 1.5px solid #4caf50;
+    color: #c8e6c9;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+
+    &:hover {
+      background-color: #4caf50;
+      color: #0b3d2e;
+      box-shadow: 0 4px 14px rgba(76, 175, 80, 0.45);
+      transform: translateY(-2px);
+    }
+  }
+}

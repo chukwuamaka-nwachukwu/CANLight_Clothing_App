@@ -1,0 +1,39 @@
+.cart-icon-container {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  .shopping-icon {
+    width: 32px;
+    height: 32px;
+    fill: none;             // keep inside transparent
+    stroke: #00ff00;        // pure bright green outline
+    stroke-width: 2px;      // make the outline thicker
+    transition: transform 0.2s ease, stroke 0.2s ease;
+  }
+
+  .shopping-icon:hover {
+    transform: scale(1.1);
+    stroke: #32cd32;        // lighter green on hover
+  }
+
+  .item-count {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background-color: #506228; // red badge
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

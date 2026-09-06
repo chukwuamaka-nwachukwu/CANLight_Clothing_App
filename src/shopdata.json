@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Brown Brim",
+    "imageUrl": "https://images.unsplash.com/photo-1584091339971-b94eb62b833e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YnJvd24lMjBicmltJTIwaGF0fGVufDB8fDB8fHww",
+    "price": 5700
+  },
+  {
+    "id": 2,
+    "name": "Blue Beanie",
+    "imageUrl": "https://images.unsplash.com/photo-1578019857395-bcfccf0ffb30?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Ymx1ZSUyMGJlYW5pZSUyMGhhdHxlbnwwfHwwfHx8MA%3D%3D",
+    "price": 4950
+  },
+  {
+    "id": 3,
+    "name": "Brown Cowboy",
+    "imageUrl": "https://images.pexels.com/photos/36621671/pexels-photo-36621671.jpeg",
+    "price": 7800
+  },
+  {
+    "id": 4,
+    "name": "Grey Brim",
+    "imageUrl": "https://images.pexels.com/photos/20817783/pexels-photo-20817783.jpeg",
+    "price": 9200
+  },
+  {
+    "id": 5,
+    "name": "Hair Scarf",
+    "imageUrl": "https://images.pexels.com/photos/12887332/pexels-photo-12887332.jpeg",
+    "price": 6300
+  },
+  {
+    "id": 6,
+    "name": "Face Cap",
+    "imageUrl": "https://images.pexels.com/photos/26288791/pexels-photo-26288791.jpeg ",
+    "price": 5750
+  },
+  {
+    "id": 7,
+    "name": "Red Beanie",
+    "imageUrl": "https://images.pexels.com/photos/2308883/pexels-photo-2308883.jpeg",
+    "price": 7100
+  },
+  {
+    "id": 8,
+    "name": "Beach hat",
+    "imageUrl": "https://images.pexels.com/photos/13083031/pexels-photo-13083031.jpeg",
+    "price": 8360
+  },
+  {
+    "id": 9,
+    "name": "Swimming Cap",
+    "imageUrl": "https://images.pexels.com/photos/9617037/pexels-photo-9617037.jpeg",
+    "price": 6600
+  }
+]
