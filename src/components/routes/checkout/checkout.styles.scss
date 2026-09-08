@@ -13,9 +13,7 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     font-family: 'Open Sans', sans-serif;
-    background: linear-gradient(270deg, #1a461a, #171b17);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color:rgb(159, 200, 159);
     border-bottom: 3px solid #1f2f1f;
     padding-bottom: 4px;
   }
@@ -26,11 +24,11 @@
     align-items: center;
     padding: 8px 0;
     border-bottom: 2px solid #162116;
-    color: #0d100d;
+    color: #b8c07dd2;
     font-size: 18px;
     text-transform: uppercase;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     padding-left: 280px;
     letter-spacing: 0.5px;
   }
@@ -78,12 +76,12 @@
     justify-content: center;
     font-size: 20px;
     margin-right: 142px;
-    color:rgb(22, 30, 22);
+    color:#1c1c19d2;
 
     .arrow {
       cursor: pointer;
       padding: 0 4px;
-      color: #2e4d2e;
+      color: #121d12;
       font-size: 20px;
       transition: color 0.2s ease;
 

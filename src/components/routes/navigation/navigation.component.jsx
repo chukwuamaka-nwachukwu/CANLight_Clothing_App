@@ -13,7 +13,7 @@ import { signOutUser } from "../../../utils/firebase/firebase.utils";
 const Navigation = () => {
 
     const {currentUser, setCurrentUser} = useContext(UserContext);
-    const{isCartOpen} = useContext(CartContext)
+    const{isCartOpen} = useContext(CartContext);
 
 
     const signOutHandler = async () => {

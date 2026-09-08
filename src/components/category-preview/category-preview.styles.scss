@@ -1,0 +1,29 @@
+.category-preview-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+
+  .title {
+    font-size: 38px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    // border-bottom: 3px solid green;
+    text-decoration: none;
+    color:rgb(1, 42, 1);
+    font-weight: 600;
+
+  }
+
+  .preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 0px;
+    padding: 70px;
+    margin-left: 20px;
+  }
+}
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
