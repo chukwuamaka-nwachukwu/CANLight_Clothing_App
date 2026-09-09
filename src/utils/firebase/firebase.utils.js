@@ -11,12 +11,12 @@ import { getFirestore, doc, getDoc, setDoc, collection,writeBatch,query,getDocs}
 import { onAuthStateChanged } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCS3BSN37_Wd2WxRGJAuJHk4K63UoJbCQw",
-  authDomain: "canlight-clothing.firebaseapp.com",
-  projectId: "canlight-clothing",
-  storageBucket: "canlight-clothing.appspot.com",
-  messagingSenderId: "408310896660",
-  appId: "1:408310896660:web:681720ed5f1ca116e22f01"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 
