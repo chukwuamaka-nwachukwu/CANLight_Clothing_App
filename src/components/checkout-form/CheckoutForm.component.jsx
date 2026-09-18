@@ -1,8 +1,9 @@
+
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { PaystackButton } from "react-paystack";
+import PaystackPop from "@paystack/inline-js";
 
-import { auth } from "../../utils/firebase/firebase.utils"
+import { auth } from "../../utils/firebase/firebase.utils";
 
 const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -22,23 +23,18 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
   ========================================================= */
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(
-      auth,
-      (user) => {
-        setCurrentUser(user);
-        setAuthLoading(false);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+      setAuthLoading(false);
 
-        if (user) {
-          setEmail(user.email || "");
-          setCustomerName(
-            user.displayName || ""
-          );
-        } else {
-          setEmail("");
-          setCustomerName("");
-        }
+      if (user) {
+        setEmail(user.email || "");
+        setCustomerName(user.displayName || "");
+      } else {
+        setEmail("");
+        setCustomerName("");
       }
-    );
+    });
 
     return unsubscribe;
   }, []);
@@ -49,20 +45,15 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
 
   const total = Number(cartTotal || 0);
 
-  const amountInKobo = Math.round(
-    total * 100
-  );
+  const amountInKobo = Math.round(total * 100);
 
-  const formattedTotal =
-    total.toLocaleString("en-NG");
+  const formattedTotal = total.toLocaleString("en-NG");
 
   /* =========================================================
      PAYMENT SUCCESS
   ========================================================= */
 
-  const handlePaymentSuccess = async (
-    response
-  ) => {
+  const handlePaymentSuccess = async (response) => {
     try {
       setIsVerifying(true);
 
@@ -70,36 +61,26 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
         "Payment received. Verifying your payment..."
       );
 
-      const verificationResponse =
-        await fetch(
-          "/.netlify/functions/verify-payment",
-          {
-            method: "POST",
+      const verificationResponse = await fetch(
+        "/.netlify/functions/verify-payment",
+        {
+          method: "POST",
 
-            headers: {
-              "Content-Type": "application/json",
-            },
+          headers: {
+            "Content-Type": "application/json",
+          },
 
-            body: JSON.stringify({
-              reference:
-                response.reference,
-
-              expectedAmount:
-                amountInKobo,
-
-              email,
-
-              customerName,
-
-              phone,
-
-              cartItems,
-
-              userId:
-                currentUser?.uid || null,
-            }),
-          }
-        );
+          body: JSON.stringify({
+            reference: response.reference,
+            expectedAmount: amountInKobo,
+            email,
+            customerName,
+            phone,
+            cartItems,
+            userId: currentUser?.uid || null,
+          }),
+        }
+      );
 
       const verificationData =
         await verificationResponse.json();
@@ -165,10 +146,72 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
 
   const handlePaymentClose = () => {
     if (!isVerifying) {
-      setPaymentMessage(
-        "Payment window closed."
-      );
+      setPaymentMessage("Payment window closed.");
     }
+  };
+
+  /* =========================================================
+     OPEN PAYSTACK
+  ========================================================= */
+
+  const handlePaystackPayment = () => {
+    if (!email.trim()) {
+      setPaymentMessage(
+        "Please enter your email address."
+      );
+      return;
+    }
+
+    if (isVerifying) {
+      return;
+    }
+
+    if (!publicKey) {
+      setPaymentMessage(
+        "Paystack public key is missing."
+      );
+      return;
+    }
+
+    if (amountInKobo <= 0) {
+      setPaymentMessage(
+        "Your cart total must be greater than ₦0."
+      );
+      return;
+    }
+
+    setPaymentMessage("");
+
+    const paystack = new PaystackPop();
+
+    paystack.newTransaction({
+      key: publicKey,
+
+      email: email.trim(),
+
+      amount: amountInKobo,
+
+      currency: "NGN",
+
+      metadata: {
+        customer_name: customerName.trim(),
+
+        phone: phone.trim(),
+
+        user_id: currentUser.uid,
+
+        cart_items: cartItems.map((item) => ({
+          id: item.id,
+          name: item.name,
+          quantity: item.quantity,
+          price: item.price,
+        })),
+      },
+
+      onSuccess: handlePaymentSuccess,
+
+      onCancel: handlePaymentClose,
+    });
   };
 
   /* =========================================================
@@ -201,7 +244,6 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
   if (!currentUser) {
     return (
       <div className="checkout-auth-state">
-
         <div className="checkout-auth-icon">
           🔐
         </div>
@@ -221,7 +263,6 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
         >
           SIGN IN TO CHECKOUT
         </a>
-
       </div>
     );
   }
@@ -239,11 +280,10 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
 
         <br />
 
-        Check your
+        Check your{" "}
         <code>
           VITE_PAYSTACK_PUBLIC_KEY
-        </code>
-
+        </code>{" "}
         environment variable.
 
         <br />
@@ -266,48 +306,6 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
       </div>
     );
   }
-
-  /* =========================================================
-     PAYSTACK CONFIGURATION
-  ========================================================= */
-
-  const componentProps = {
-    email,
-
-    amount: amountInKobo,
-
-    publicKey,
-
-    currency: "NGN",
-
-    metadata: {
-      customer_name: customerName,
-
-      phone,
-
-      user_id:
-        currentUser.uid,
-
-      cart_items: cartItems.map(
-        (item) => ({
-          id: item.id,
-          name: item.name,
-          quantity: item.quantity,
-          price: item.price,
-        })
-      ),
-    },
-
-    text: isVerifying
-      ? "VERIFYING PAYMENT..."
-      : `PAY ₦${formattedTotal}`,
-
-    onSuccess:
-      handlePaymentSuccess,
-
-    onClose:
-      handlePaymentClose,
-  };
 
   /* =========================================================
      CHECKOUT FORM
@@ -457,14 +455,19 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
 
         </div>
 
-        <PaystackButton
-          {...componentProps}
+        <button
+          type="button"
           className="paystack-button"
+          onClick={handlePaystackPayment}
           disabled={
             !email.trim() ||
             isVerifying
           }
-        />
+        >
+          {isVerifying
+            ? "VERIFYING PAYMENT..."
+            : `PAY ₦${formattedTotal}`}
+        </button>
 
         {paymentMessage && (
           <p className="payment-message">

@@ -10,12 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@paystack/inline-js": "^2.25.0",
     "@stripe/react-stripe-js": "^6.10.0",
     "@stripe/stripe-js": "^9.16.0",
     "firebase": "^12.18.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-paystack": "^6.0.0",
     "react-redux": "^9.3.0",
     "react-router-dom": "^6.30.6",
     "redux": "^5.0.1",
