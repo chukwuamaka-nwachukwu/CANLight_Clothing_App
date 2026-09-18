@@ -1,3 +1,4 @@
+
 import { initializeApp } from "firebase/app";
 
 import {
@@ -22,12 +23,13 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCS3BSN37_Wd2WxRGJAuJHk4K63UoJbCQw",
-  authDomain: "canlight-clothing.firebaseapp.com",
-  projectId: "canlight-clothing",
-  storageBucket: "canlight-clothing.appspot.com",
-  messagingSenderId: "408310896660",
-  appId: "1:408310896660:web:681720ed5f1ca116e22f01",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId:
+    import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
