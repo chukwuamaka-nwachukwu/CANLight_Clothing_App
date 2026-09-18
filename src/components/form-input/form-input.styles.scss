@@ -1,5 +1,5 @@
-$sub-color: #abb8b0; // emerald accent
-$main-color: #ffffff; // white text
+$sub-color: #546e7a; // steel blue accent
+$main-color: #eceff1; // cool gray text
 
 @mixin shrinkLabel {
   top: -14px;
@@ -23,8 +23,8 @@ $main-color: #ffffff; // white text
 
     &:focus {
       outline: none;
-      border-bottom: 1px solid #2f4f4f; // dark slate
-      box-shadow: 0 2px 6px rgba(80,200,120,0.4);
+      border-bottom: 1px solid #4db6ac; // muted teal
+      box-shadow: 0 2px 6px rgba(77,182,172,0.4); // teal glow
     }
 
     &:focus ~ .form-input-label {

@@ -1,21 +1,23 @@
 .shop-page {
-  /* more breathing room */
   padding: 30px 0px;
+  margin-top: 20px;
   min-height: 100vh;
-  color: #e8f5e9;
   text-align: center;
+  background-color: #abb0b3; /* soft mist gray for contrast */
 }
+
 .shop-title {
   position: relative;
-  font-size: 42px;
-  font-weight: 600;
+  font-size: 50px;
+  font-weight: 700;
   margin-bottom: 20px;
-  color: #c8e6c9;
   text-transform: uppercase;
   padding-bottom: 12px;
   display: inline-block;
-   /* Gradient text */
-  background: linear-gradient(300deg, #060f06, #104e13aa, #060f06);
+  margin-top: 80px;
+
+  /* Muted cool gradient text */
+  background: linear-gradient(300deg, #1a237e, #4db6ac, #37474f);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
@@ -25,30 +27,25 @@
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    width: 200%; /* extend underline length */
+    width: 160%;
     height: 3px;
-    background-color: #2c382c;
-    box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+    background-color: #546e7a; /* steel blue underline */
+    box-shadow: 0 0 8px rgba(77, 182, 172, 0.6); /* muted teal glow */
   }
 }
 
 .shop-subtitle {
-  font-size: 20px;
-  font-weight: 400;
-  color: rgb(141, 161, 116);
+  font-size: 24px;
+  font-weight: 500;
+  color: #546e7a; /* steel blue */
   margin-bottom: 60px;
   letter-spacing: 0.5px;
   font-style: italic;
+  text-shadow: 0 0 4px rgba(84, 110, 122, 0.5);
+  animation: fadeIn 1.2s ease-in-out;
 }
 
-.products-container {
-  margin-top: 60px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 40px;
-  max-width: 1200px;   /* keeps grid balanced */
-  margin-left: 180px;
-  margin-right: auto;  /* centers the whole grid */
-  padding: 30px;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-

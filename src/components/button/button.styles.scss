@@ -1,13 +1,14 @@
-*{
+* {
   font-family: 'Open Sans', sans-serif;
 }
+
 .button-container {
   min-width: 145px;
   height: 50px;
-  padding: 0 0px;
-  gap: 0px;
+  padding: 0;
+  gap: 0;
   font-size: 15px;
-  background: linear-gradient(135deg, #40675d, #122619); // emerald gradient
+  background: linear-gradient(135deg, #31726b, #37474f); /* muted teal → slate */
   color: #fff;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: bold;
@@ -25,21 +26,21 @@
   }
 
   &:hover {
-    background: linear-gradient(135deg, #2f4f4f, #50c878); // slate → emerald hover
+    background: linear-gradient(135deg, #00897b, #263238); /* darker teal → charcoal */
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(80,200,120,0.4); // emerald glow
+    box-shadow: 0 6px 15px rgba(77,182,172,0.4); /* muted teal glow */
   }
 
   &:active {
-    transform: scale(0.97); // subtle press effect
-    box-shadow: 0 3px 8px rgba(80,200,120,0.3);
+    transform: scale(0.97); /* subtle press effect */
+    box-shadow: 0 3px 8px rgba(77,182,172,0.3);
   }
 
   &.google-sign-in {
-    background: #d4d6d9; // Google blue
-    color: rgb(2, 52, 2);
-    width:160px;
+    background: #d4d6d9; /* neutral gray */
+    color: #1a237e; /* deep navy text */
+    width: 160px;
     display: flex;
     justify-items: space-between;
     text-align: left;
@@ -49,22 +50,22 @@
     }
 
     &:hover {
-      background: #357ae8;
+      background: #357ae8; /* Google blue */
       box-shadow: 0 6px 15px rgba(53,122,232,0.4);
-      color:white;
+      color: white;
     }
   }
 
   &.inverted {
     background-color: transparent;
-    color: #50c878;
-    border: 2px solid #50c878;
+    color: #799290; /* muted teal */
+    border: 2px solid #4db6ac;
 
     &:hover {
-      background-color: #50c878;
-      color: #111;
+      background-color: #4db6ac;
+      color: #0d1b2a; /* midnight blue text */
       border: none;
-      box-shadow: 0 6px 15px rgba(80,200,120,0.4);
+      box-shadow: 0 6px 15px rgba(77,182,172,0.4);
     }
   }
 }

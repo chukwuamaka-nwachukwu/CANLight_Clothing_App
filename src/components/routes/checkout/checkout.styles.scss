@@ -1,5 +1,5 @@
 .checkout-container {
-  color: #d9e6d9;
+  color: #eceff1; /* cool gray text */
   padding: 20px;
   background: transparent;
   min-height: 100vh;
@@ -13,8 +13,8 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     font-family: 'Open Sans', sans-serif;
-    color:rgb(159, 200, 159);
-    border-bottom: 3px solid #1f2f1f;
+    color: #4db6ac; /* muted teal */
+    border-bottom: 3px solid #37474f; /* slate underline */
     padding-bottom: 4px;
   }
 
@@ -23,8 +23,8 @@
     grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.8fr;
     align-items: center;
     padding: 8px 0;
-    border-bottom: 2px solid #162116;
-    color: #b8c07dd2;
+    border-bottom: 2px solid #263238; /* charcoal */
+    color: #90a4ae; /* muted gray-blue */
     font-size: 18px;
     text-transform: uppercase;
     font-weight: 700;
@@ -38,12 +38,12 @@
     grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.8fr;
     align-items: center;
     padding: 6px 0;
-    border-bottom: 2px solid #1f2f1f;
+    border-bottom: 2px solid #37474f;
     padding-left: 280px;
     transition: background 0.2s ease;
 
     &:hover {
-      background: rgba(63, 163, 77, 0.05);
+      background: rgba(77, 182, 172, 0.08); /* muted teal hover */
       cursor: pointer;
     }
   }
@@ -59,14 +59,14 @@
       height: 100%;
       object-fit: cover;
       border-radius: 6px;
-      border: 3px solid #7f9f7f;
+      border: 3px solid #546e7a; /* steel blue border */
     }
   }
 
   .description {
     font-size: 20px;
     font-weight: 700;
-    color: #cbe1cb;
+    color: #cfd8dc; /* mist gray */
     margin-left: 10px;
   }
 
@@ -76,17 +76,17 @@
     justify-content: center;
     font-size: 20px;
     margin-right: 142px;
-    color:#1c1c19d2;
+    color: #37474f;
 
     .arrow {
       cursor: pointer;
       padding: 0 4px;
-      color: #121d12;
+      color: #263238;
       font-size: 20px;
       transition: color 0.2s ease;
 
       &:hover {
-        color: #7fbf7f;
+        color: #4db6ac; /* muted teal hover */
       }
     }
 
@@ -99,20 +99,20 @@
 
   .price {
     font-weight: 800;
-    color: #a0e1a0;
+    color: #4db6ac; /* muted teal */
     font-size: 20px;
   }
 
   .remove-button {
     cursor: pointer;
-    color: #b29e65;
+    color: #90a4ae; /* muted gray-blue */
     font-size: 20px;
     margin-left: 20px;
     transition: color 0.2s ease;
     font-weight: 600;
 
     &:hover {
-      color: #d97a7a;
+      color: #ef5350; /* cool red for remove */
     }
   }
 
@@ -120,7 +120,7 @@
     text-align: center;
     margin-top: 20px;
     font-size: 18px;
-    color: #d7e3d7;
+    color: #b0bec5; /* soft silver */
     font-weight: 600;
     margin-left: 680px;
   }
@@ -131,23 +131,23 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 20px; // space between total and button
-    background: rgba(31, 47, 31, 0.7);
+    gap: 20px;
+    background: rgba(26, 35, 126, 0.7); /* deep navy background */
     border-radius: 8px;
     padding: 12px 20px;
-    margin-left: 660px; // keep your margin intact
+    margin-left: 660px;
   }
 
   .checkout-total {
     font-size: 32px;
     font-weight: 800;
-    color: #102517;
+    color: #4db6ac; /* slate gray */
     margin-left: 620px;
     margin-top: 30px;
   }
 
   .checkout-button button {
-    background: #2e6b3d;
+    background: #4db6ac; /* muted teal button */
     color: #fff;
     font-size: 18px;
     font-weight: 700;
@@ -158,7 +158,7 @@
     transition: background 0.3s ease, transform 0.2s ease;
 
     &:hover {
-      background: #245a32;
+      background: #00897b; /* darker teal hover */
       transform: translateY(-2px);
     }
   }

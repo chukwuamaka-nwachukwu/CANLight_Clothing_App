@@ -1,20 +1,21 @@
+
+/* Sign-in container */
 .sign-in-container {
   display: flex;
   flex-direction: column;
   width: 380px;
   padding: 30px;
-  background-color: #1a1a1a;
-  border: 1px solid #399056; // emerald border
+  background-color: #1a1a1a; /* dark background */
+  border: 1px solid #37474f; /* slate gray border */
   border-radius: 8px;
 
- h2, span {
-  color:  #4e7d71;  // deep emerald
-  text-align: center;
-  margin-bottom: 15px;
-  font-weight: 600;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.6); // subtle shadow for readability
-}
-
+  h2, span {
+    color: #4db6ac; /* muted teal text */
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6); /* subtle shadow */
+  }
 
   .buttons-container {
     display: flex;

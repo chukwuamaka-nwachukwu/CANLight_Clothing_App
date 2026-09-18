@@ -1,14 +1,14 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: linear-gradient(270deg, #050909, #314739ca, #050909 );
-  color: #ffffff;
+  background: linear-gradient(270deg, #0d113e, #263238, #0d1b2a); /* deep navy + charcoal gradient */
+  color: #eceff1; /* cool gray text */
   font-family: 'Open Sans', sans-serif;
-  height:100vh;
-  width:100%;
+  height: 100vh;
+  width: 100%;
 }

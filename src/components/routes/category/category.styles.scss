@@ -1,8 +1,80 @@
-.category-title{
-    text-align: center;
-    margin-top: 130px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 40px;
-    color:rgb(2, 34, 2);
-    font-weight: 600;
+.category-page{
+    background: linear-gradient(70deg,#bcc3c6,#a0a4a6,#797b7d);
+    margin-top: -120px;
+}
+.products-container {
+  display: grid;                         /* ✅ switch to grid */
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  gap: 25px;                             /* spacing between cards */
+  padding: 40px;
+  margin-top: 40px;
+  background-color: linear-gradient(70deg,#bcc3c6,#828688,#5c5e60);
+
+  .category-card {
+    background: rgba(255,255,255,0.06);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(77,182,172,0.4); /* muted teal glow */
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #4db6ac; /* muted teal */
+      margin: 12px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 15px;
+      color: #eceff1; /* cool gray */
+      margin: 0 12px 12px;
+      text-align: center;
+    }
+  }
+}
+
+.category-title {
+  display: grid;
+  place-items: center;
+  margin-top: 130px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #1a237e, #2e6f68, #263238);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  padding-bottom: 8px;
+  padding-top: 60px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) scaleX(0);
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(90deg, #132d2a, #546e7a);
+    box-shadow: 0 0 4px rgba(77,182,172,0.4); /* ✅ softer glow */
+    transition: transform 0.3s ease;
+    transform-origin: center;
+  }
+
+  &:hover::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  &:hover {
+    transform: scale(1.03); /* ✅ smaller scale */
+    text-shadow: 0 0 3px rgba(84,110,122,0.4); /* ✅ softer steel blue glow */
+    cursor: pointer;
+  }
 }

@@ -10,23 +10,23 @@
   .shopping-icon {
     width: 32px;
     height: 32px;
-    fill: none;             // keep inside transparent
-    stroke: #00ff00;        // pure bright green outline
-    stroke-width: 2px;      // make the outline thicker
+    fill: none;                /* keep inside transparent */
+    stroke: #4db6ac;           /* muted teal outline */
+    stroke-width: 2px;         /* thicker outline */
     transition: transform 0.2s ease, stroke 0.2s ease;
   }
 
   .shopping-icon:hover {
     transform: scale(1.1);
-    stroke: #32cd32;        // lighter green on hover
+    stroke: #546e7a;           /* steel blue hover */
   }
 
   .item-count {
     position: absolute;
     top: 6px;
     right: 6px;
-    background-color: #506228; // red badge
-    color: #fff;
+    background-color: #1a237e; /* deep navy badge */
+    color: #eceff1;            /* cool gray text */
     font-size: 11px;
     font-weight: bold;
     border-radius: 50%;
@@ -35,5 +35,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 0 6px rgba(77,182,172,0.6); /* subtle teal glow */
   }
 }

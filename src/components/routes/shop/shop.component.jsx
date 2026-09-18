@@ -1,33 +1,45 @@
-import  { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
-import { CategoriesContext } from "../../../contexts/categories.context";
+import { useSelector } from "react-redux";
+
 import CategoryPreview from "../../category-preview/category-preview.component";
 import Category from "../category/category.component";
+
+import {
+  selectCategoriesMap,
+  selectCategoriesLoading,
+  selectCategoriesError,
+} from "../../../store/categories/categories.selectors";
+
 import "./shop.styles.scss";
 
 const Shop = () => {
-  const { categoriesMap } = useContext(CategoriesContext);
+  const categoriesMap = useSelector(selectCategoriesMap);
+  const isLoading = useSelector(selectCategoriesLoading);
+  const error = useSelector(selectCategoriesError);
+
+  if (isLoading) return <div className="shop-page"><h2>Loading products...</h2></div>;
+  if (error) return <div className="shop-page"><h2>Unable to load products.</h2><p>{error.message}</p></div>;
 
   return (
     <Routes>
-      {/* Preview page at /shop */}
       <Route
         index
         element={
           <div className="shop-page">
-            <h2 className="shop-title">Featured Collection</h2>
-            <p className="shop-subtitle">Curated styles for modern elegance</p>
-            {Object.keys(categoriesMap).map((title) => (
-              <CategoryPreview
-                key={title}
-                title={title}
-                products={categoriesMap[title]}
-              />
-            ))}
+            {/* ✅ Page header + subtitle */}
+            <h1 className="shop-title">Style Showcase </h1>
+            <p className="shop-subtitle">Handpicked fashion for modern living</p>
+
+            {categoriesMap && Object.keys(categoriesMap).length > 0 ? (
+              Object.keys(categoriesMap).map((title) => (
+                <CategoryPreview key={title} title={title} products={categoriesMap[title]} />
+              ))
+            ) : (
+              <h2>No products available</h2>
+            )}
           </div>
         }
       />
-      {/* Dynamic category page at /shop/:category */}
       <Route path=":category" element={<Category />} />
     </Routes>
   );

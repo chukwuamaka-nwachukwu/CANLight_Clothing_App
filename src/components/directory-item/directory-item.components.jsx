@@ -1,5 +1,4 @@
-import "react";
-import { Link,useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./directory-item.styles.scss";
 
 const DirectoryItem = ({ category }) => {
@@ -16,11 +15,7 @@ const DirectoryItem = ({ category }) => {
       />
       <div className="directory-item-body">
         <h2>{title.toUpperCase()}</h2>
-        <p>
-          <Link to={`/shop/${title.toLowerCase()}`} className="shop-link">
-            Shop Now
-          </Link>
-        </p>
+        <p className="shop-link">Shop Now</p>
       </div>
     </div>
   );

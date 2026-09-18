@@ -1,5 +1,5 @@
 .product-card-container {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06); /* softer glass effect */
   border-radius: 20px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   overflow: hidden;
@@ -20,7 +20,7 @@
     width: 100%;
     height: 260px;
     object-fit: cover;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     transition: opacity 0.3s ease;
   }
 
@@ -28,13 +28,13 @@
     opacity: 0.9;
   }
 
-  .footer {
+  .product-card-footer {
     width: 100%;
-    padding: 16px 20px;
+    padding: 16px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #c8e6c9;
+    color: #cfd8dc; /* mist gray */
     font-weight: 600;
     font-size: 17px;
     letter-spacing: 0.5px;
@@ -42,11 +42,12 @@
     .name {
       flex: 1;
       text-align: left;
+      color: #37474f; /* slate gray */
     }
 
     .price {
       text-align: right;
-      color: #81c784;
+      color: #03332e; /* muted teal */
       font-weight: 700;
     }
   }
@@ -55,8 +56,8 @@
     margin: 16px 0;
     width: 85%;
     background-color: transparent;
-    border: 1.5px solid #4caf50;
-    color: #c8e6c9;
+    border: 1.5px solid #4db6ac; /* muted teal border */
+    color: #cfd8dc; /* mist gray text */
     border-radius: 12px;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -65,9 +66,9 @@
     font-size: 20px;
 
     &:hover {
-      background-color: #4caf50;
-      color: #0b3d2e;
-      box-shadow: 0 4px 14px rgba(76, 175, 80, 0.45);
+      background-color: #4db6ac; /* muted teal fill */
+      color: #0d1b2a; /* midnight blue text */
+      box-shadow: 0 4px 14px rgba(77, 182, 172, 0.45);
       transform: translateY(-2px);
     }
   }

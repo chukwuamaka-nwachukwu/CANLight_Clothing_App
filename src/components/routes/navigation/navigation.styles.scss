@@ -1,118 +1,96 @@
 .logo {
   height: 70px;
-  filter: drop-shadow(0 0 5px rgba(98,114,17,0.6));
+  filter: drop-shadow(0 0 5px rgba(77,182,172,0.6)); /* muted teal glow */
   animation: glow 3s infinite;
-  color:rgb(125, 156, 125);
 }
 
 @keyframes glow {
-  0%   { filter: drop-shadow(0 0 5px rgb(156, 156, 154)); }
-  50%  { filter: drop-shadow(0 0 15px rgb(225, 226, 223)); }
-  100% { filter: drop-shadow(0 0 5px rgb(250, 250, 248)); }
+  0%   { filter: drop-shadow(0 0 5px #546e7a); }   /* steel blue */
+  50%  { filter: drop-shadow(0 0 15px #4db6ac); }  /* muted teal */
+  100% { filter: drop-shadow(0 0 5px #1a237e); }   /* deep navy */
 }
 
 .navigation {
-  height: 70px;
+  background: linear-gradient(270deg, #0d113e, #263238, #0d1b2a); /* navy → charcoal */
+  height: 80px;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px;
+  margin-bottom: 0px;
+  padding: 0 40px;
 
   .logo-container {
-    height: 100%;
-    width: 70px;
-    padding: 25px;
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 12px;
     text-decoration: none;
-    font-size: 10px;
-    color: rgb(179, 202, 179);
-
-    
+    color: #cfd8dc; /* mist gray */
   }
 
   h1 {
-    filter: drop-shadow(0 0 20px white);
-    margin-top: 10px;
-    
+    font-size: 22px;
+    font-weight: 700;
+    filter: drop-shadow(0 0 12px #4db6ac); /* muted teal glow */
   }
+
   .nav-links-container {
-    width: 50%;
-    height: 100%;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    margin-top: 20px;
-    margin-right: 50px;
-    
+    align-items: center;
+    gap: 25px;
 
-    .nav-link {
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 23px;
-      text-decoration: none;
-      color: rgb(157, 195, 157);
+    .nav-link, .username {
+      font-size: 20px;
       font-weight: 600;
-      transition: color 0.3s ease;
-      
-    }
+      color: #eceff1; /* cool gray */
+      transition: color 0.3s ease, text-shadow 0.3s ease;
 
-    .nav-link:hover {
-      color: #ffffff;
-      text-shadow: 0 0 8px rgba(80,200,120,0.7);
-      text-decoration: underline;
-
+      &:hover {
+        color: #4db6ac; /* muted teal hover */
+        text-shadow: 0 0 6px rgba(77,182,172,0.6);
+      }
     }
-    
   }
 }
-
+.username{
+  margin-top: 10px;
+}
 .category-body-container {
-  height: 90px;
+  height: 100px;
   padding: 0 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(30,30,30,0.8); /* dark overlay */
+  background-color: rgba(26,35,126,0.85); /* deep navy overlay */
   border: none;
-  opacity: 0.85;
   position: absolute;
-
   h2 {
     font-weight: bold;
-    margin: 0 6px 0;
     font-size: 22px;
-    color: #ffffff; /* gold accent */
+    color: #4db6ac; /* muted teal accent */
   }
 
   p {
     font-weight: 600;
     font-size: 16px;
-    color: white;
-    filter: drop-shadow(0 0 200px white);
+    color: #cfd8dc; /* mist gray */
+    text-shadow: 0 0 8px #546e7a; /* steel blue glow */
   }
 }
-body{
-    margin:0;
-}
-*{
-    box-sizing: border-box;
-    
-}
+
 .username {
   margin-right: 30px;
   font-weight: bold;
   font-size: 22px;
   margin-bottom: 10px;
-  color:#a3aca3;
+  color: #90a4ae; /* muted gray-blue */
 }
 
 .signed-out-message {
   margin-left: 15px;
   margin-bottom: 12px;
-  margin-right:50px;
+  margin-right: 50px;
   font-style: italic;
-  color: #f41f18; /* red for signed out */
+  color: #ef5350; /* cool red for contrast */
   font-size: 20px;
 }

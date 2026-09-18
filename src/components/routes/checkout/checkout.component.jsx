@@ -1,17 +1,26 @@
-import "react";
 import "./checkout.styles.scss";
-import { useContext } from "react";
-import { CartContext } from "../../../contexts/cart.context";
+import { useSelector, useDispatch } from "react-redux";
+import { CART_ACTION_TYPES } from "../../../reducers/cart.reducer";
 import { formatPrice } from "../../../utils/formatPrice";
 
+import {
+  selectCartItems,
+  selectCartTotal,
+} from "../../../store/cart/cart.selectors";
+
 const Checkout = () => {
-  const {
-    cartItems,
-    addItemToCart,
-    removeItemFromCart,
-    clearItemFromCart,
-    cartTotal,
-  } = useContext(CartContext);
+  const dispatch = useDispatch();
+
+  // ✅ Use Reselect selectors
+  const cartItems = useSelector(selectCartItems);
+  const cartTotal = useSelector(selectCartTotal);
+
+  const addItemToCart = (item) =>
+    dispatch({ type: CART_ACTION_TYPES.ADD_ITEM, payload: item });
+  const removeItemFromCart = (item) =>
+    dispatch({ type: CART_ACTION_TYPES.REMOVE_ITEM, payload: item });
+  const clearItemFromCart = (item) =>
+    dispatch({ type: CART_ACTION_TYPES.CLEAR_ITEM, payload: item });
 
   return (
     <div className="checkout-container">
@@ -26,24 +35,21 @@ const Checkout = () => {
 
       <div className="checkout-items">
         {cartItems.length ? (
-          cartItems.map((cartItem) => {
-            const { id, name, imageUrl, price, quantity } = cartItem;
-            return (
-              <div key={id} className="checkout-item">
-                <div className="image-container">
-                  <img src={imageUrl} alt={name} />
-                </div>
-                <span className="description">{name}</span>
-                <span className="quantity">
-                  <span className="arrow" onClick={() => removeItemFromCart(cartItem)}>❮</span>
-                  <span className="value">{quantity}</span>
-                  <span className="arrow" onClick={() => addItemToCart(cartItem)}>❯</span>
-                </span>
-                <span className="price">₦{formatPrice(price * quantity)}</span>
-                <span className="remove-button" onClick={() => clearItemFromCart(cartItem)}>✕</span>
+          cartItems.map(({ id, name, imageUrl, price, quantity }) => (
+            <div key={id} className="checkout-item">
+              <div className="image-container">
+                <img src={imageUrl} alt={name} />
               </div>
-            );
-          })
+              <span className="description">{name}</span>
+              <span className="quantity">
+                <span className="arrow" onClick={() => removeItemFromCart({ id })}>❮</span>
+                <span className="value">{quantity}</span>
+                <span className="arrow" onClick={() => addItemToCart({ id, name, imageUrl, price })}>❯</span>
+              </span>
+              <span className="price">₦{formatPrice(price * quantity)}</span>
+              <span className="remove-button" onClick={() => clearItemFromCart({ id })}>✕</span>
+            </div>
+          ))
         ) : (
           <span className="empty-message">Your cart is empty</span>
         )}
@@ -55,4 +61,5 @@ const Checkout = () => {
     </div>
   );
 };
+
 export default Checkout;
