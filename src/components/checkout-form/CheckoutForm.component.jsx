@@ -14,6 +14,11 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
   const [phone, setPhone] = useState("");
 
   const [paymentMessage, setPaymentMessage] = useState("");
+
+  // Payment states
+  const [isProcessingPayment, setIsProcessingPayment] =
+    useState(false);
+
   const [isVerifying, setIsVerifying] = useState(false);
 
   const publicKey = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY;
@@ -55,6 +60,7 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
 
   const handlePaymentSuccess = async (response) => {
     try {
+      setIsProcessingPayment(false);
       setIsVerifying(true);
 
       setPaymentMessage(
@@ -137,6 +143,7 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
       );
     } finally {
       setIsVerifying(false);
+      setIsProcessingPayment(false);
     }
   };
 
@@ -145,6 +152,8 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
   ========================================================= */
 
   const handlePaymentClose = () => {
+    setIsProcessingPayment(false);
+
     if (!isVerifying) {
       setPaymentMessage("Payment window closed.");
     }
@@ -162,7 +171,7 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
       return;
     }
 
-    if (isVerifying) {
+    if (isProcessingPayment || isVerifying) {
       return;
     }
 
@@ -181,6 +190,7 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
     }
 
     setPaymentMessage("");
+    setIsProcessingPayment(true);
 
     const paystack = new PaystackPop();
 
@@ -221,9 +231,7 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
   if (authLoading) {
     return (
       <div className="checkout-auth-state">
-        <div className="checkout-auth-icon">
-          ...
-        </div>
+        <div className="checkout-spinner"></div>
 
         <h2>
           Checking your account
@@ -350,6 +358,7 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
             }
             placeholder="Enter your full name"
             autoComplete="name"
+            disabled={isProcessingPayment || isVerifying}
           />
 
         </div>
@@ -372,6 +381,7 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
             placeholder="you@example.com"
             autoComplete="email"
             required
+            disabled={isProcessingPayment || isVerifying}
           />
 
         </div>
@@ -393,6 +403,7 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
             }
             placeholder="08012345678"
             autoComplete="tel"
+            disabled={isProcessingPayment || isVerifying}
           />
 
         </div>
@@ -461,12 +472,23 @@ const CheckoutForm = ({ cartTotal, cartItems = [] }) => {
           onClick={handlePaystackPayment}
           disabled={
             !email.trim() ||
+            isProcessingPayment ||
             isVerifying
           }
         >
-          {isVerifying
-            ? "VERIFYING PAYMENT..."
-            : `PAY ₦${formattedTotal}`}
+          {isVerifying ? (
+            <>
+              <span className="button-spinner"></span>
+              VERIFYING PAYMENT...
+            </>
+          ) : isProcessingPayment ? (
+            <>
+              <span className="button-spinner"></span>
+              OPENING PAYMENT...
+            </>
+          ) : (
+            `PAY ₦${formattedTotal}`
+          )}
         </button>
 
         {paymentMessage && (

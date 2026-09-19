@@ -1,3 +1,4 @@
+
 export const CATEGORIES_ACTION_TYPES = {
   SET_CATEGORIES: "SET_CATEGORIES",
   SET_CATEGORIES_LOADING: "SET_CATEGORIES_LOADING",
@@ -5,27 +6,31 @@ export const CATEGORIES_ACTION_TYPES = {
 };
 
 export const INITIAL_CATEGORIES_STATE = {
-  categoriesMap: {},   // ✅ start as empty object
+  categoriesMap: {},
   isLoading: false,
   error: null,
 };
 
-export const categoriesReducer = (state = INITIAL_CATEGORIES_STATE, action = {}) => {
+export const categoriesReducer = (
+  state = INITIAL_CATEGORIES_STATE,
+  action = {}
+) => {
   const { type, payload } = action;
 
   switch (type) {
-    case CATEGORIES_ACTION_TYPES.SET_CATEGORIES:
-      return {
-        ...state,
-        categoriesMap: payload || {}, // ✅ guard against null
-        isLoading: false,
-        error: null,
-      };
-
     case CATEGORIES_ACTION_TYPES.SET_CATEGORIES_LOADING:
       return {
         ...state,
         isLoading: payload,
+        error: null,
+      };
+
+    case CATEGORIES_ACTION_TYPES.SET_CATEGORIES:
+      return {
+        ...state,
+        categoriesMap: payload || {},
+        isLoading: false,
+        error: null,
       };
 
     case CATEGORIES_ACTION_TYPES.SET_CATEGORIES_ERROR:
@@ -36,6 +41,6 @@ export const categoriesReducer = (state = INITIAL_CATEGORIES_STATE, action = {})
       };
 
     default:
-      return state; // ✅ safe default
+      return state;
   }
 };

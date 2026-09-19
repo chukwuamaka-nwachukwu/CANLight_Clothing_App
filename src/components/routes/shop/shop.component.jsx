@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 import CategoryPreview from "../../category-preview/category-preview.component";
 import Category from "../category/category.component";
+import Spinner from "../../spinner/spinner.component";
 
 import {
   selectCategoriesMap,
@@ -17,7 +18,7 @@ const Shop = () => {
   const isLoading = useSelector(selectCategoriesLoading);
   const error = useSelector(selectCategoriesError);
 
-  if (isLoading) return <div className="shop-page"><h2>Loading products...</h2></div>;
+  if (isLoading) return <div className="shop-page"><Spinner/></div>;
   if (error) return <div className="shop-page"><h2>Unable to load products.</h2><p>{error.message}</p></div>;
 
   return (
