@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import "./installPWA.scss";
 
@@ -6,34 +7,25 @@ const InstallPWA = () => {
   const [isInstalled, setIsInstalled] = useState(false);
 
   useEffect(() => {
-    console.log("=================================");
-    console.log("CANLight PWA");
-    console.log("=================================");
-
     // Check whether CANLight is already installed
     const checkIfInstalled = () => {
       const standalone =
         window.matchMedia("(display-mode: standalone)").matches ||
         window.navigator.standalone === true;
 
-      console.log(
-        "CANLight running as installed app:",
-        standalone
-      );
-
       setIsInstalled(standalone);
     };
 
     checkIfInstalled();
 
-    // Browser provides the native installation prompt
+    // Chrome/Edge fires this when the PWA is installable
     const handleBeforeInstallPrompt = (event) => {
-      console.log("✅ CANLight beforeinstallprompt FIRED");
+      console.log("✅ CANLight is ready to install.");
 
-      // Stop Chrome from automatically displaying its prompt
+      // Stop the browser from automatically showing its own prompt
       event.preventDefault();
 
-      // Save the event for our button
+      // Save the event so our button can trigger it
       setInstallPrompt(event);
     };
 
@@ -42,9 +34,9 @@ const InstallPWA = () => {
       handleBeforeInstallPrompt
     );
 
-    // App successfully installed
+    // Fires after successful installation
     const handleAppInstalled = () => {
-      console.log("✅ CANLight successfully installed.");
+      console.log("✅ CANLight installed successfully.");
 
       setInstallPrompt(null);
       setIsInstalled(true);
@@ -69,30 +61,33 @@ const InstallPWA = () => {
   }, []);
 
   const handleInstallClick = async () => {
-    /*
-     * If Chrome has provided the native PWA prompt,
-     * open it.
-     */
+    // Native browser installation prompt is available
     if (installPrompt) {
       try {
-        console.log(
-          "Opening CANLight installation prompt..."
-        );
+        console.log("📱 Opening CANLight installation prompt...");
 
+        // Immediately open the browser's install dialog
         await installPrompt.prompt();
 
-        const { outcome } =
-          await installPrompt.userChoice;
+        // Wait for the user's decision
+        const { outcome } = await installPrompt.userChoice;
 
         console.log(
           "CANLight installation result:",
           outcome
         );
 
+        // The prompt can only be used once
         setInstallPrompt(null);
+
+        if (outcome === "accepted") {
+          console.log("🎉 CANLight installation accepted.");
+        } else {
+          console.log("CANLight installation cancelled.");
+        }
       } catch (error) {
         console.error(
-          "CANLight installation error:",
+          "❌ CANLight installation error:",
           error
         );
       }
@@ -100,27 +95,19 @@ const InstallPWA = () => {
       return;
     }
 
-    /*
-     * If Chrome has NOT provided beforeinstallprompt,
-     * tell the user how to install manually.
-     */
+    // If the browser hasn't supplied the native prompt yet
     alert(
-      "CANLight can be installed from your browser menu. " +
-        "On Chrome, click the Install icon in the address bar " +
-        "or open the browser menu and choose 'Install CANLight Clothing'."
+      "CANLight is not ready for automatic installation yet.\n\n" +
+        "Please open the browser menu and choose " +
+        "'Install CANLight Clothing'."
     );
   };
 
-  /*
-   * If already installed, don't show the button.
-   */
+  // Don't show the button after installation
   if (isInstalled) {
     return null;
   }
 
-  /*
-   * ALWAYS SHOW THE BUTTON WHEN RUNNING IN THE BROWSER.
-   */
   return (
     <button
       type="button"
@@ -128,8 +115,7 @@ const InstallPWA = () => {
       onClick={handleInstallClick}
       aria-label="Install CANLight Clothing"
     >
-      📱 Install CANLight<br/>Clothing
-      
+      📱 Install CANLight<br />Clothing
     </button>
   );
 };
