@@ -7,25 +7,146 @@ const InstallPWA = () => {
   const [isInstalled, setIsInstalled] = useState(false);
 
   useEffect(() => {
-    // Check whether CANLight is already installed
+    console.log("========================================");
+    console.log("CANLight PWA INSTALLATION CHECK");
+    console.log("========================================");
+
+    // ---------------------------------------------------------
+    // CHECK HTTPS
+    // ---------------------------------------------------------
+
+    console.log(
+      "HTTPS:",
+      window.location.protocol === "https:"
+    );
+
+    console.log(
+      "Current URL:",
+      window.location.href
+    );
+
+    // ---------------------------------------------------------
+    // CHECK SERVICE WORKER
+    // ---------------------------------------------------------
+
+    console.log(
+      "Service Worker supported:",
+      "serviceWorker" in navigator
+    );
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .getRegistrations()
+        .then((registrations) => {
+          console.log(
+            "Service Worker registrations:",
+            registrations
+          );
+
+          if (registrations.length === 0) {
+            console.warn(
+              "⚠️ No service worker is registered."
+            );
+          } else {
+            console.log(
+              "✅ Service worker found."
+            );
+
+            registrations.forEach((registration) => {
+              console.log(
+                "Service Worker scope:",
+                registration.scope
+              );
+
+              console.log(
+                "Service Worker active:",
+                registration.active
+              );
+
+              console.log(
+                "Service Worker installing:",
+                registration.installing
+              );
+
+              console.log(
+                "Service Worker waiting:",
+                registration.waiting
+              );
+            });
+          }
+        })
+        .catch((error) => {
+          console.error(
+            "❌ Could not check service worker:",
+            error
+          );
+        });
+    }
+
+    // ---------------------------------------------------------
+    // CHECK MANIFEST
+    // ---------------------------------------------------------
+
+    const manifest = document.querySelector(
+      'link[rel="manifest"]'
+    );
+
+    console.log(
+      "Manifest link:",
+      manifest
+    );
+
+    if (manifest) {
+      console.log(
+        "Manifest URL:",
+        manifest.href
+      );
+    } else {
+      console.error(
+        "❌ NO MANIFEST LINK FOUND."
+      );
+    }
+
+    // ---------------------------------------------------------
+    // CHECK INSTALLED STATE
+    // ---------------------------------------------------------
+
     const checkIfInstalled = () => {
       const standalone =
-        window.matchMedia("(display-mode: standalone)").matches ||
+        window.matchMedia(
+          "(display-mode: standalone)"
+        ).matches ||
         window.navigator.standalone === true;
+
+      console.log(
+        "Running as installed app:",
+        standalone
+      );
 
       setIsInstalled(standalone);
     };
 
     checkIfInstalled();
 
-    // Chrome/Edge fires this when the PWA is installable
-    const handleBeforeInstallPrompt = (event) => {
-      console.log("✅ CANLight is ready to install.");
+    // ---------------------------------------------------------
+    // BEFORE INSTALL PROMPT
+    // ---------------------------------------------------------
 
-      // Stop the browser from automatically showing its own prompt
+    const handleBeforeInstallPrompt = (event) => {
+      console.log(
+        "========================================"
+      );
+
+      console.log(
+        "🎉 beforeinstallprompt FIRED!"
+      );
+
+      console.log(
+        "========================================"
+      );
+
       event.preventDefault();
 
-      // Save the event so our button can trigger it
       setInstallPrompt(event);
     };
 
@@ -34,9 +155,22 @@ const InstallPWA = () => {
       handleBeforeInstallPrompt
     );
 
-    // Fires after successful installation
+    // ---------------------------------------------------------
+    // APP INSTALLED
+    // ---------------------------------------------------------
+
     const handleAppInstalled = () => {
-      console.log("✅ CANLight installed successfully.");
+      console.log(
+        "========================================"
+      );
+
+      console.log(
+        "🎉 CANLight Clothing was installed!"
+      );
+
+      console.log(
+        "========================================"
+      );
 
       setInstallPrompt(null);
       setIsInstalled(true);
@@ -46,6 +180,10 @@ const InstallPWA = () => {
       "appinstalled",
       handleAppInstalled
     );
+
+    // ---------------------------------------------------------
+    // CLEANUP
+    // ---------------------------------------------------------
 
     return () => {
       window.removeEventListener(
@@ -60,53 +198,64 @@ const InstallPWA = () => {
     };
   }, []);
 
+  // ---------------------------------------------------------
+  // INSTALL BUTTON
+  // ---------------------------------------------------------
+
   const handleInstallClick = async () => {
-    // Native browser installation prompt is available
-    if (installPrompt) {
-      try {
-        console.log("📱 Opening CANLight installation prompt...");
+    console.log(
+      "Install button clicked."
+    );
 
-        // Immediately open the browser's install dialog
-        await installPrompt.prompt();
+    console.log(
+      "Saved install prompt:",
+      installPrompt
+    );
 
-        // Wait for the user's decision
-        const { outcome } = await installPrompt.userChoice;
-
-        console.log(
-          "CANLight installation result:",
-          outcome
-        );
-
-        // The prompt can only be used once
-        setInstallPrompt(null);
-
-        if (outcome === "accepted") {
-          console.log("🎉 CANLight installation accepted.");
-        } else {
-          console.log("CANLight installation cancelled.");
-        }
-      } catch (error) {
-        console.error(
-          "❌ CANLight installation error:",
-          error
-        );
-      }
+    if (!installPrompt) {
+      alert(
+        "Chrome has not made CANLight Clothing available for automatic installation yet.\n\n" +
+          "Please check the browser console for the PWA diagnostic information."
+      );
 
       return;
     }
 
-    // If the browser hasn't supplied the native prompt yet
-    alert(
-      "CANLight is not ready for automatic installation yet.\n\n" +
-        "Please open the browser menu and choose " +
-        "'Install CANLight Clothing'."
-    );
+    try {
+      console.log(
+        "Opening native CANLight Clothing installation dialog..."
+      );
+
+      await installPrompt.prompt();
+
+      const { outcome } =
+        await installPrompt.userChoice;
+
+      console.log(
+        "Installation result:",
+        outcome
+      );
+
+      setInstallPrompt(null);
+    } catch (error) {
+      console.error(
+        "Installation error:",
+        error
+      );
+    }
   };
 
-  // Don't show the button after installation
+  // ---------------------------------------------------------
+  // HIDE AFTER INSTALLATION
+  // ---------------------------------------------------------
+
   if (isInstalled) {
     return null;
   }
+
+  // ---------------------------------------------------------
+  // ALWAYS SHOW BUTTON
+  // ---------------------------------------------------------
 
   return (
     <button

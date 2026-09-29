@@ -1,3 +1,4 @@
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
@@ -8,47 +9,43 @@ import { store } from "./store/store";
 
 import { registerSW } from "virtual:pwa-register";
 
-/*
-=========================================================
-REGISTER CANLIGHT PWA SERVICE WORKER
-=========================================================
-*/
+// =========================================================
+// REGISTER CANLIGHT PWA SERVICE WORKER
+// =========================================================
 
 registerSW({
   immediate: true,
 
   onNeedRefresh() {
     console.log(
-      "A new version of CANLight is available."
+      "🔄 A new version of CANLight Clothing is available."
     );
   },
 
   onOfflineReady() {
     console.log(
-      "CANLight is ready to work offline."
+      "✅ CANLight Clothing is ready to work offline."
     );
   },
 
   onRegistered(registration) {
     console.log(
-      "CANLight PWA service worker registered.",
+      "✅ CANLight Clothing service worker registered:",
       registration
     );
   },
 
   onRegisterError(error) {
     console.error(
-      "CANLight PWA service worker registration failed:",
+      "❌ CANLight Clothing service worker registration failed:",
       error
     );
   },
 });
 
-/*
-=========================================================
-REACT APPLICATION
-=========================================================
-*/
+// =========================================================
+// REACT APPLICATION
+// =========================================================
 
 ReactDOM.createRoot(
   document.getElementById("root")
