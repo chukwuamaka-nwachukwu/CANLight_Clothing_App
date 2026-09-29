@@ -1,3 +1,4 @@
+
 .cart-icon-container {
   width: 50px;
   height: 50px;
@@ -6,6 +7,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  flex-shrink: 0;
 
   .shopping-icon {
     width: 32px;
@@ -35,6 +37,106 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 6px rgba(77,182,172,0.6); /* subtle teal glow */
+    box-shadow: 0 0 6px rgba(77, 182, 172, 0.6); /* subtle teal glow */
+  }
+}
+
+
+/* =========================================================
+   TABLETS
+========================================================= */
+
+@media screen and (max-width: 768px) {
+  .cart-icon-container {
+    width: 46px;
+    height: 46px;
+
+    .shopping-icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .item-count {
+      top: 4px;
+      right: 4px;
+      width: 17px;
+      height: 17px;
+      font-size: 10px;
+    }
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 600px) {
+  .cart-icon-container {
+    width: 44px;
+    height: 44px;
+
+    .shopping-icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .item-count {
+      top: 4px;
+      right: 4px;
+      width: 17px;
+      height: 17px;
+      font-size: 10px;
+    }
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media screen and (max-width: 400px) {
+  .cart-icon-container {
+    width: 40px;
+    height: 40px;
+
+    .shopping-icon {
+      width: 26px;
+      height: 26px;
+    }
+
+    .item-count {
+      top: 3px;
+      right: 3px;
+      width: 16px;
+      height: 16px;
+      font-size: 9px;
+    }
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media screen and (max-width: 360px) {
+  .cart-icon-container {
+    width: 38px;
+    height: 38px;
+
+    .shopping-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    .item-count {
+      top: 2px;
+      right: 2px;
+      width: 15px;
+      height: 15px;
+      font-size: 8px;
+    }
   }
 }

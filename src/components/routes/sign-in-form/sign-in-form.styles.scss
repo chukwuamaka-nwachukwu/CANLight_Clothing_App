@@ -1,25 +1,223 @@
 
-/* Sign-in container */
+/* =========================================================
+   SIGN-IN CONTAINER
+========================================================= */
+
 .sign-in-container {
   display: flex;
   flex-direction: column;
+
   width: 380px;
+  max-width: 100%;
+
   padding: 30px;
-  background-color: #1a1a1a; /* dark background */
-  border: 1px solid #37474f; /* slate gray border */
+
+  box-sizing: border-box;
+
+  background-color: #1a1a1a;
+  border: 1px solid #37474f;
   border-radius: 8px;
 
-  h2, span {
-    color: #4db6ac; /* muted teal text */
+  h2,
+  span {
+    color: #4db6ac;
     text-align: center;
     margin-bottom: 15px;
     font-weight: 600;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.6); /* subtle shadow */
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
   }
 
   .buttons-container {
     display: flex;
     justify-content: space-between;
+    gap: 15px;
+
     margin-top: 20px;
+  }
+}
+
+
+/* =========================================================
+   SIGN-UP CONTAINER
+========================================================= */
+
+.sign-up-container {
+  display: flex;
+  flex-direction: column;
+
+  width: 380px;
+  max-width: 100%;
+
+  padding: 30px;
+
+  box-sizing: border-box;
+
+  background-color: #1a1a1a;
+  border: 1px solid #4db6ac;
+  border-radius: 8px;
+
+  h2,
+  span {
+    color: #546e7a;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  }
+
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-top: 20px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   601px - 900px
+========================================================= */
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .sign-in-container,
+  .sign-up-container {
+    width: 440px;
+    max-width: calc(100% - 50px);
+
+    padding: 32px;
+
+    border-radius: 10px;
+
+    h2 {
+      font-size: 25px;
+      margin-bottom: 17px;
+    }
+
+    span {
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .buttons-container {
+      gap: 16px;
+      margin-top: 22px;
+
+      /* Prevent buttons from becoming cramped */
+      > * {
+        flex: 1;
+        min-width: 0;
+      }
+    }
+  }
+}
+
+
+/* =========================================================
+   SMALL TABLET
+   601px - 700px
+========================================================= */
+
+@media (min-width: 601px) and (max-width: 700px) {
+  .sign-in-container,
+  .sign-up-container {
+    width: 420px;
+    max-width: calc(100% - 40px);
+
+    padding: 28px;
+
+    h2 {
+      font-size: 24px;
+    }
+
+    span {
+      font-size: 14px;
+    }
+
+    .buttons-container {
+      gap: 13px;
+    }
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .sign-in-container,
+  .sign-up-container {
+    width: calc(100% - 30px);
+    max-width: 380px;
+
+    padding: 25px;
+  }
+
+  .sign-in-container,
+  .sign-up-container {
+    .buttons-container {
+      gap: 12px;
+    }
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+  .sign-in-container,
+  .sign-up-container {
+    width: calc(100% - 24px);
+
+    padding: 22px;
+  }
+
+  .sign-in-container,
+  .sign-up-container {
+    h2 {
+      font-size: 22px;
+    }
+
+    span {
+      font-size: 14px;
+    }
+
+    .buttons-container {
+      gap: 10px;
+    }
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+  .sign-in-container,
+  .sign-up-container {
+    width: calc(100% - 20px);
+
+    padding: 18px;
+  }
+
+  .sign-in-container,
+  .sign-up-container {
+    h2 {
+      font-size: 20px;
+    }
+
+    span {
+      font-size: 13px;
+    }
+
+    .buttons-container {
+      gap: 8px;
+    }
   }
 }

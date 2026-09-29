@@ -1,65 +1,743 @@
-.category-preview-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 30px;
-
-  h2 {
-    text-align: center;   /* ✅ center the header */
-    margin-bottom: 25px;
-    position: relative;   /* needed for underline */
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-
-    .title {
-      font-size: 38px;
-      cursor: pointer;
-      text-decoration: none;
-      color: #37474f; /* slate gray */
-      font-weight: 600;
-      position: relative;
-      transition: color 0.3s ease, transform 0.3s ease;
-
-      /* ✅ underline effect */
-      &::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: -6px;
-        transform: translateX(-50%) scaleX(0);
-        width: 120%;
-        height: 3px;
-        background: linear-gradient(90deg, #1b3e3b, #546e7a); /* muted teal + steel blue */
-        box-shadow: 0 0 6px rgba(77,182,172,0.6);
-        transition: transform 0.3s ease;
-        transform-origin: center;
-      }
-
-      &:hover {
-        color: #2e6a64; /* muted teal hover */
-        transform: scale(1.05);
-        text-shadow: 0 0 6px rgba(208, 212, 214, 0.6); /* steel blue glow */
-
-      }
-
-      &:hover::after {
-        transform: translateX(-50%) scaleX(1);
-        width:120%;
-      }
-    }
-  }
-
-  .preview {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 0px;
-    padding: 70px;
-    margin-left: 20px;
-  }
-}
+/* =========================================================
+   GLOBAL BOX SIZING
+========================================================= */
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CATEGORY PREVIEW CONTAINER
+========================================================= */
+
+.category-preview-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 30px;
+  overflow: visible;
+
+  /* =======================================================
+     CATEGORY TITLE
+  ======================================================= */
+
+  h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+
+    .title {
+      font-size: 38px;
+      cursor: pointer;
+      text-decoration: none;
+      color: #37474f;
+      font-weight: 600;
+      position: relative;
+
+      transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -6px;
+
+        transform:
+          translateX(-50%)
+          scaleX(0);
+
+        width: 120%;
+        height: 3px;
+
+        background: linear-gradient(
+          90deg,
+          #1b3e3b,
+          #546e7a
+        );
+
+        box-shadow:
+          0 0 6px rgba(77, 182, 172, 0.6);
+
+        transition:
+          transform 0.3s ease;
+
+        transform-origin: center;
+      }
+
+      &:hover {
+        color: #2e6a64;
+
+        transform:
+          scale(1.05);
+
+        text-shadow:
+          0 0 6px rgba(208, 212, 214, 0.6);
+      }
+
+      &:hover::after {
+        transform:
+          translateX(-50%)
+          scaleX(1);
+      }
+    }
+  }
+
+
+  /* =======================================================
+     CATEGORY PREVIEW
+     
+     DEFAULT = DESKTOP GRID
+  ======================================================= */
+
+  .preview {
+    display: grid !important;
+
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+
+    gap: 24px;
+
+    width: 100%;
+    max-width: 100%;
+
+    padding:
+      35px 35px 30px;
+
+    margin: 0;
+
+    box-sizing: border-box;
+
+    overflow: visible !important;
+
+    scrollbar-width: none;
+
+    user-select: none;
+
+    white-space: normal;
+
+    align-items: stretch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    > * {
+      min-width: 0 !important;
+      width: 100% !important;
+
+      flex-shrink: 1 !important;
+      flex-grow: 0 !important;
+
+      white-space: normal;
+    }
+  }
+
+
+  /* =======================================================
+     CATEGORY SLIDE
+     
+     GRID ITEM
+  ======================================================= */
+
+  .category-slide {
+    position: relative;
+
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+
+    flex: none !important;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+    justify-content: flex-start;
+
+    padding: 0;
+    margin: 0;
+
+    overflow: visible;
+
+    isolation: isolate;
+
+    white-space: normal;
+  }
+
+
+  /* =======================================================
+     PRODUCT CARD INSIDE CATEGORY PREVIEW
+  ======================================================= */
+
+  .category-slide > .product-card-container {
+    display: flex;
+
+    width: 100% !important;
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    flex:
+      1 1 auto;
+
+    box-sizing: border-box;
+  }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   1200px AND ABOVE
+   
+   4-COLUMN GRID
+========================================================= */
+
+@media (min-width: 1200px) {
+
+  .category-preview-container {
+
+    .preview {
+      display: grid !important;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 28px;
+
+      padding:
+        40px 45px 35px;
+
+      width: 100%;
+      max-width: 100%;
+
+      overflow: visible !important;
+    }
+
+    .category-slide {
+      width: 100% !important;
+      min-width: 0 !important;
+      max-width: 100% !important;
+
+      flex: none !important;
+    }
+
+    .category-slide > .product-card-container {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+  }
+}
+
+
+/* =========================================================
+   LAPTOP
+   1025px - 1199px
+   
+   3-COLUMN GRID
+========================================================= */
+
+@media (max-width: 1199px) and (min-width: 1025px) {
+
+  .category-preview-container {
+
+    .preview {
+      display: grid !important;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 24px;
+
+      padding:
+        35px 30px 30px;
+
+      width: 100%;
+      max-width: 100%;
+
+      overflow: visible !important;
+
+      flex-wrap: unset !important;
+    }
+
+    .category-slide {
+      width: 100% !important;
+      min-width: 0 !important;
+      max-width: 100% !important;
+
+      flex: none !important;
+      flex-shrink: 1 !important;
+    }
+
+    .category-slide > .product-card-container {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+  }
+}
+
+
+/* =========================================================
+   LARGE TABLET
+   901px - 1024px
+   
+   KEEP HORIZONTAL SCROLL
+========================================================= */
+
+@media (max-width: 1024px) and (min-width: 901px) {
+
+  .category-preview-container {
+
+    h2 {
+      margin-bottom: 20px;
+
+      .title {
+        font-size: 34px;
+      }
+    }
+
+    .preview {
+      display: flex !important;
+
+      flex-direction: row !important;
+
+      flex-wrap: nowrap !important;
+
+      align-items: stretch;
+
+      justify-content: flex-start;
+
+      gap: 22px;
+
+      padding:
+        30px 20px 28px;
+
+      width: 100%;
+      max-width: 100%;
+
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+
+      scroll-snap-type: x mandatory;
+
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .category-slide {
+      flex:
+        0 0 330px !important;
+
+      width: 330px !important;
+
+      min-width: 330px !important;
+
+      max-width: 330px !important;
+
+      flex-shrink: 0 !important;
+
+      flex-grow: 0 !important;
+    }
+
+    .category-slide > .product-card-container {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   751px - 900px
+========================================================= */
+
+@media (max-width: 900px) and (min-width: 751px) {
+
+  .category-preview-container {
+
+    h2 {
+      margin-bottom: 18px;
+
+      .title {
+        font-size: 31px;
+      }
+    }
+
+    .preview {
+      display: flex !important;
+
+      flex-direction: row !important;
+
+      flex-wrap: nowrap !important;
+
+      align-items: stretch;
+
+      justify-content: flex-start;
+
+      width: 100% !important;
+
+      max-width: 100% !important;
+
+      gap: 20px !important;
+
+      padding:
+        30px 18px 26px;
+
+      overflow-x: auto !important;
+
+      overflow-y: hidden !important;
+
+      scroll-snap-type: x mandatory;
+
+      scrollbar-width: none;
+
+      white-space: nowrap;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .category-slide {
+      position: relative;
+
+      flex:
+        0 0 300px !important;
+
+      width: 300px !important;
+
+      min-width: 300px !important;
+
+      max-width: 300px !important;
+
+      flex-shrink: 0 !important;
+
+      flex-grow: 0 !important;
+
+      display: flex !important;
+
+      flex-direction: column;
+
+      white-space: normal;
+    }
+
+    .category-slide > .product-card-container {
+      width: 100% !important;
+
+      min-width: 0 !important;
+
+      max-width: 100% !important;
+    }
+  }
+}
+
+
+/* =========================================================
+   SMALL TABLET
+   601px - 750px
+========================================================= */
+
+@media (max-width: 750px) and (min-width: 601px) {
+
+  .category-preview-container {
+
+    h2 {
+      margin-bottom: 17px;
+
+      .title {
+        font-size: 28px;
+      }
+    }
+
+    .preview {
+      display: flex !important;
+
+      flex-direction: row !important;
+
+      flex-wrap: nowrap !important;
+
+      align-items: stretch;
+
+      justify-content: flex-start;
+
+      width: 100% !important;
+
+      max-width: 100% !important;
+
+      gap: 20px !important;
+
+      padding:
+        26px 16px 24px;
+
+      overflow-x: auto !important;
+
+      overflow-y: hidden !important;
+
+      scroll-snap-type: x mandatory;
+
+      scrollbar-width: none;
+
+      white-space: nowrap;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .category-slide {
+      flex:
+        0 0 280px !important;
+
+      width: 280px !important;
+
+      min-width: 280px !important;
+
+      max-width: 280px !important;
+
+      flex-shrink: 0 !important;
+
+      flex-grow: 0 !important;
+
+      display: flex !important;
+
+      flex-direction: column;
+
+      white-space: normal;
+    }
+
+    .category-slide > .product-card-container {
+      width: 100% !important;
+
+      min-width: 0 !important;
+
+      max-width: 100% !important;
+    }
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   600px AND BELOW
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .category-preview-container {
+
+    margin-bottom: 25px;
+
+    h2 {
+      margin-bottom: 16px;
+
+      width: 100%;
+
+      .title {
+        font-size: 26px;
+      }
+    }
+
+    .preview {
+      display: flex !important;
+
+      flex-direction: row !important;
+
+      flex-wrap: nowrap !important;
+
+      align-items: stretch;
+
+      justify-content: flex-start;
+
+      width: 100% !important;
+
+      max-width: 100% !important;
+
+      overflow-x: auto !important;
+
+      overflow-y: hidden !important;
+
+      gap: 18px !important;
+
+      padding:
+        25px 15px 28px;
+
+      scroll-snap-type: x mandatory;
+
+      scrollbar-width: none;
+
+      white-space: nowrap;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .category-slide {
+      flex:
+        0 0 90% !important;
+
+      width: 90% !important;
+
+      min-width: 90% !important;
+
+      max-width: 90% !important;
+
+      flex-shrink: 0 !important;
+
+      flex-grow: 0 !important;
+
+      display: flex !important;
+
+      flex-direction: column;
+
+      scroll-snap-align: center;
+
+      white-space: normal;
+    }
+
+    .category-slide > .product-card-container {
+      width: 100% !important;
+
+      min-width: 0 !important;
+
+      max-width: 100% !important;
+    }
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   450px AND BELOW
+========================================================= */
+
+@media (max-width: 450px) {
+
+  .category-preview-container {
+
+    h2 {
+      margin-bottom: 14px;
+
+      .title {
+        font-size: 23px;
+      }
+    }
+
+    .preview {
+      gap: 16px !important;
+
+      padding:
+        22px 12px 25px;
+
+      flex-wrap: nowrap !important;
+
+      overflow-x: auto !important;
+    }
+
+    .category-slide {
+      flex:
+        0 0 92% !important;
+
+      width: 92% !important;
+
+      min-width: 92% !important;
+
+      max-width: 92% !important;
+
+      flex-shrink: 0 !important;
+
+      flex-grow: 0 !important;
+    }
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   360px AND BELOW
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .category-preview-container {
+
+    .preview {
+      gap: 14px !important;
+
+      padding:
+        20px 10px 23px;
+
+      flex-wrap: nowrap !important;
+
+      overflow-x: auto !important;
+    }
+
+    .category-slide {
+      flex:
+        0 0 94% !important;
+
+      width: 94% !important;
+
+      min-width: 94% !important;
+
+      max-width: 94% !important;
+
+      flex-shrink: 0 !important;
+
+      flex-grow: 0 !important;
+    }
+  }
+}
+
+
+/* =========================================================
+   EXTRA SMALL
+   320px AND BELOW
+========================================================= */
+
+@media (max-width: 320px) {
+
+  .category-preview-container {
+
+    .preview {
+      gap: 12px !important;
+
+      padding:
+        18px 8px 21px;
+
+      flex-wrap: nowrap !important;
+
+      overflow-x: auto !important;
+    }
+
+    .category-slide {
+      flex:
+        0 0 95% !important;
+
+      width: 95% !important;
+
+      min-width: 95% !important;
+
+      max-width: 95% !important;
+
+      flex-shrink: 0 !important;
+
+      flex-grow: 0 !important;
+    }
+  }
 }

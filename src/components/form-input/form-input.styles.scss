@@ -1,3 +1,4 @@
+
 $sub-color: #546e7a; // steel blue accent
 $main-color: #eceff1; // cool gray text
 
@@ -17,14 +18,16 @@ $main-color: #eceff1; // cool gray text
     font-size: 18px;
     padding: 10px 5px;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     border: none;
     border-bottom: 1px solid $sub-color;
     transition: border-color 0.3s, box-shadow 0.3s;
 
     &:focus {
       outline: none;
-      border-bottom: 1px solid #4db6ac; // muted teal
-      box-shadow: 0 2px 6px rgba(77,182,172,0.4); // teal glow
+      border-bottom: 1px solid #4db6ac;
+      box-shadow: 0 2px 6px rgba(77,182,172,0.4);
     }
 
     &:focus ~ .form-input-label {
@@ -48,6 +51,66 @@ $main-color: #eceff1; // cool gray text
 
     &.shrink {
       @include shrinkLabel();
+    }
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 600px) {
+  .group {
+    margin: 22px 0;
+
+    .form-input {
+      font-size: 17px;
+      padding: 9px 5px;
+    }
+
+    .form-input-label {
+      font-size: 15px;
+    }
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+  .group {
+    margin: 20px 0;
+
+    .form-input {
+      font-size: 16px;
+      padding: 9px 5px;
+    }
+
+    .form-input-label {
+      font-size: 14px;
+    }
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+  .group {
+    margin: 18px 0;
+
+    .form-input {
+      font-size: 15px;
+      padding: 8px 5px;
+    }
+
+    .form-input-label {
+      font-size: 13px;
     }
   }
 }

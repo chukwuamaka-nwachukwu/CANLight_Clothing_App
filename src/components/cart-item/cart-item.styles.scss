@@ -1,24 +1,262 @@
+
+/* =========================================================
+   CART ITEM
+========================================================= */
+
 .cart-item-container {
   width: 100%;
-  display: flex;
   height: 80px;
+
+  display: flex;
+  align-items: stretch;
+
   margin-bottom: 15px;
-  color:rgb(236, 252, 238);
+
+  color: rgb(236, 252, 238);
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  /* =======================================================
+     PRODUCT IMAGE
+  ======================================================= */
 
   img {
     width: 30%;
+    height: 100%;
+
+    min-width: 0;
+
+    object-fit: cover;
+
+    flex-shrink: 0;
+
+    display: block;
   }
+
+  /* =======================================================
+     ITEM DETAILS
+  ======================================================= */
 
   .item-details {
     width: 70%;
+
+    min-width: 0;
+
     display: flex;
     flex-direction: column;
+
     align-items: flex-start;
     justify-content: center;
+
     padding: 10px 20px;
 
+    box-sizing: border-box;
+
+    overflow: hidden;
+
     .name {
+      width: 100%;
+
       font-size: 16px;
+      line-height: 1.25;
+
+      word-break: break-word;
+      overflow-wrap: anywhere;
+
+      color: rgb(236, 252, 238);
     }
+  }
+}
+
+
+/* =========================================================
+   LARGE TABLETS
+   769px - 1024px
+========================================================= */
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  .cart-item-container {
+    height: 78px;
+
+    margin-bottom: 14px;
+
+    img {
+      width: 31%;
+    }
+
+    .item-details {
+      width: 69%;
+
+      padding: 9px 16px;
+
+      .name {
+        font-size: 15px;
+
+        line-height: 1.25;
+      }
+    }
+  }
+}
+
+
+/* =========================================================
+   TABLETS
+   601px - 768px
+========================================================= */
+
+@media screen and (max-width: 768px) and (min-width: 601px) {
+  .cart-item-container {
+    height: 74px;
+
+    margin-bottom: 13px;
+
+    img {
+      width: 31%;
+    }
+
+    .item-details {
+      width: 69%;
+
+      padding: 8px 14px;
+
+      .name {
+        font-size: 14px;
+
+        line-height: 1.25;
+      }
+    }
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   600px AND BELOW
+========================================================= */
+
+@media screen and (max-width: 600px) {
+  .cart-item-container {
+    height: 70px;
+
+    margin-bottom: 12px;
+
+    img {
+      width: 30%;
+    }
+
+    .item-details {
+      width: 70%;
+
+      padding: 8px 12px;
+
+      .name {
+        font-size: 14px;
+
+        line-height: 1.25;
+      }
+    }
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   450px AND BELOW
+========================================================= */
+
+@media screen and (max-width: 450px) {
+  .cart-item-container {
+    height: 67px;
+
+    margin-bottom: 11px;
+
+    img {
+      width: 31%;
+    }
+
+    .item-details {
+      width: 69%;
+
+      padding: 7px 10px;
+
+      .name {
+        font-size: 13px;
+
+        line-height: 1.2;
+      }
+    }
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   360px AND BELOW
+========================================================= */
+
+@media screen and (max-width: 360px) {
+  .cart-item-container {
+    height: 62px;
+
+    margin-bottom: 10px;
+
+    img {
+      width: 32%;
+    }
+
+    .item-details {
+      width: 68%;
+
+      padding: 6px 8px;
+
+      .name {
+        font-size: 12px;
+
+        line-height: 1.2;
+      }
+    }
+  }
+}
+
+
+/* =========================================================
+   EXTRA SMALL PHONES
+   320px AND BELOW
+========================================================= */
+
+@media screen and (max-width: 320px) {
+  .cart-item-container {
+    height: 58px;
+
+    margin-bottom: 8px;
+
+    img {
+      width: 33%;
+    }
+
+    .item-details {
+      width: 67%;
+
+      padding: 5px 7px;
+
+      .name {
+        font-size: 11px;
+
+        line-height: 1.15;
+      }
+    }
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION / ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .cart-item-container {
+    transition: none;
   }
 }

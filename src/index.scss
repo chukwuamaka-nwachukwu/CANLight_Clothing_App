@@ -1,15 +1,74 @@
-body {
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
-    font-optical-sizing: auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   CANLIGHT FONT
+========================================================= */
+
+html,
+body,
+#root {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
   font-style: normal;
-  font-variation-settings:
-    "wdth" 55;
+  font-variation-settings: "wdth" 75;
+}
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+  min-height: 100vh;
+  width: 100%;
+
+  background:
+    linear-gradient(
+      270deg,
+      #0d113e,
+      #263238,
+      #0d1b2a
+    );
+
+  color: #eceff1;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+/* =========================================================
+   FORM ELEMENTS
+========================================================= */
+
+button,
+input,
+textarea,
+select,
+option {
+  font-family: inherit;
+  font-optical-sizing: inherit;
+  font-style: inherit;
+}
+
+/* =========================================================
+   CODE
+========================================================= */
+
+code,
+pre {
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Courier New",
     monospace;
 }

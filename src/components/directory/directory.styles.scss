@@ -1,41 +1,120 @@
-.directory-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 20px;
+/* =========================================================
+   GLOBAL BOX SIZING
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
+
+
+/* =========================================================
+   BODY
+========================================================= */
 
 body {
-  margin: 0; 
+  margin: 0;
+
+  width: 100%;
+
+  overflow-x: hidden;
 }
 
-.home-background {
-  height: 88.7vh;
+
+/* =========================================================
+   DIRECTORY CONTAINER
+========================================================= */
+
+.directory-container {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  align-items: stretch;
+
   width: 100%;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  overflow-x: hidden;
 }
+
+
+/* =========================================================
+   HOME BACKGROUND
+========================================================= */
+
+.home-background {
+  width: 100%;
+
+  height: 88.7vh;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   CATEGORY CONTAINER
+========================================================= */
 
 .category-container {
   min-width: 30%;
+
   height: 240px;
+
   flex: 1 1 auto;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
-  border: 1px solid #37474f; /* slate gray border */
-  margin: 0 7.5px 15px;
-  border-radius: 12px;
-  overflow: hidden;
+
   position: relative;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  transition: box-shadow 0.3s ease;
+
+  margin: 0 7.5px 15px;
+
+  overflow: hidden;
+
+  border: 1px solid #37474f;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.4);
+
+  box-sizing: border-box;
+
+  cursor: pointer;
+
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+
+
+  /* =======================================================
+     DESKTOP HOVER
+  ======================================================= */
 
   &:hover {
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(77,182,172,0.4); /* muted teal glow */
+    box-shadow:
+      0 8px 20px rgba(77, 182, 172, 0.4);
 
     .background-image {
-      transform: scale(1.1);
-      transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+      transform: scale(1.08);
+
+      transition:
+        transform 6s cubic-bezier(
+          0.25,
+          0.45,
+          0.45,
+          0.95
+        );
     }
 
     .category-body-container {
@@ -43,45 +122,723 @@ body {
     }
   }
 
+
+  /* =======================================================
+     CATEGORY BACKGROUND IMAGE
+  ======================================================= */
+
   .background-image {
+    position: absolute;
+
+    inset: 0;
+
     width: 100%;
+
     height: 100%;
+
     background-size: cover;
+
     background-position: center;
+
+    transition:
+      transform 0.4s ease;
   }
+
+
+  /* =======================================================
+     IMAGE DARK OVERLAY
+  ======================================================= */
 
   .background-image::after {
     content: "";
+
     position: absolute;
+
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+      linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.65),
+        rgba(0, 0, 0, 0.05)
+      );
   }
 
+
+  /* =======================================================
+     TITLE / DESCRIPTION BOX
+  ======================================================= */
+
   .category-body-container {
-    height: 90px;
-    padding: 0 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(46, 47, 54, 0.8); /* deep navy overlay */
-    border: none;
-    opacity: 0.85;
     position: absolute;
 
+    z-index: 2;
+
+    width: auto;
+
+    max-width: 90%;
+
+    min-width: 180px;
+
+    height: 90px;
+
+    padding: 0 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background-color:
+      rgba(46, 47, 54, 0.8);
+
+    border: none;
+
+    opacity: 0.85;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    transition:
+      opacity 0.3s ease;
+
+
     h2 {
-      font-weight: bold;
-      margin: 0 6px 0;
+      width: 100%;
+
+      margin: 0 6px;
+
       font-size: 22px;
-      color: #4db6ac; /* muted teal accent */
-      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+
+      line-height: 1.25;
+
+      font-weight: bold;
+
+      color: #4db6ac;
+
+      text-align: center;
+
+      text-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.6);
+
+      overflow-wrap: break-word;
+
+      word-break: normal;
     }
 
+
     p {
+      width: 100%;
+
+      margin: 6px 0 0;
+
       font-size: 16px;
-      color: #eceff1; /* cool gray */
+
+      line-height: 1.4;
+
       font-weight: 500;
-      text-shadow: 0 0 6px rgba(84,110,122,0.6); /* steel blue glow */
+
+      color: #eceff1;
+
+      text-align: center;
+
+      text-shadow:
+        0 0 6px rgba(84, 110, 122, 0.6);
+
+      overflow-wrap: break-word;
+
+      word-break: normal;
+    }
+  }
+}
+
+
+/* =========================================================
+   TABLET MODE
+   901px - 601px
+========================================================= */
+
+@media screen and (max-width: 900px) and (min-width: 601px) {
+
+  .directory-container {
+    width: 100%;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    padding: 25px 30px;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    flex-wrap: nowrap !important;
+
+    justify-content: flex-start !important;
+
+    align-items: center !important;
+
+    gap: 20px !important;
+
+    overflow-x: hidden !important;
+
+    overflow-y: visible !important;
+  }
+
+
+  .category-container {
+    width: 100% !important;
+
+    min-width: 0 !important;
+
+    max-width: 700px !important;
+
+    height: 220px;
+
+    margin: 0 !important;
+
+    flex: 0 0 auto !important;
+
+    border-radius: 12px;
+
+    box-sizing: border-box;
+
+
+    &.large {
+      height: 340px;
+    }
+
+
+    /* =====================================================
+       TABLET BACKGROUND
+    ===================================================== */
+
+    .background-image {
+      width: 100%;
+
+      height: 100%;
+
+      background-size: cover;
+
+      background-position: center;
+    }
+
+
+    /* =====================================================
+       TABLET TEXT BOX
+    ===================================================== */
+
+    .category-body-container {
+      width: auto;
+
+      max-width: 90%;
+
+      min-width: 190px;
+
+      height: 90px;
+
+      min-height: 90px;
+
+      padding: 0 25px;
+
+      border-radius: 0;
+
+
+      h2 {
+        font-size: 22px;
+
+        line-height: 1.25;
+
+        margin: 0 6px;
+      }
+
+
+      p {
+        font-size: 16px;
+
+        line-height: 1.4;
+
+        margin: 6px 0 0;
+      }
+    }
+  }
+}
+
+
+/* =========================================================
+   SMALL TABLETS
+   750px - 601px
+========================================================= */
+
+@media screen and (max-width: 750px) and (min-width: 601px) {
+
+  .directory-container {
+    width: 100%;
+
+    max-width: 760px;
+
+    padding: 20px 22px;
+
+    gap: 16px !important;
+  }
+
+
+  .category-container {
+    width: 100% !important;
+
+    min-width: 0 !important;
+
+    max-width: 650px !important;
+
+    height: 205px;
+
+    margin: 0 !important;
+
+    flex: 0 0 auto !important;
+
+    border-radius: 11px;
+
+
+    &.large {
+      height: 300px;
+    }
+
+
+    .background-image {
+      width: 100%;
+
+      height: 100%;
+
+      background-size: cover;
+
+      background-position: center;
+    }
+
+
+    .category-body-container {
+      width: auto;
+
+      max-width: 90%;
+
+      min-width: 180px;
+
+      height: 90px;
+
+      min-height: 90px;
+
+      padding: 0 25px;
+
+
+      h2 {
+        font-size: 22px;
+
+        line-height: 1.25;
+
+        margin: 0 6px;
+      }
+
+
+      p {
+        font-size: 16px;
+
+        line-height: 1.4;
+
+        margin: 6px 0 0;
+      }
+    }
+  }
+}
+
+
+/* =========================================================
+   MOBILE PHONES
+   600px AND BELOW
+========================================================= */
+
+@media screen and (max-width: 600px) {
+
+  .directory-container {
+    width: 100%;
+
+    max-width: 100%;
+
+    margin: 0;
+
+    padding: 12px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex-wrap: nowrap;
+
+    justify-content: flex-start;
+
+    align-items: stretch;
+
+    gap: 12px;
+
+    overflow-x: hidden;
+  }
+
+
+  /* =======================================================
+     MOBILE CATEGORY CARD
+  ======================================================= */
+
+  .category-container {
+    width: 100% !important;
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    height: 220px;
+
+    margin: 0 !important;
+
+    flex: 0 0 auto;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+
+    &.large {
+      height: 260px;
+    }
+
+
+    /* =====================================================
+       MOBILE BACKGROUND IMAGE
+    ===================================================== */
+
+    .background-image {
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      background-size: cover;
+
+      background-position: center;
+
+      transform: none !important;
+    }
+
+
+    /* =====================================================
+       MOBILE GREY TEXT BOX
+       
+       SMALL + COMPACT
+    ===================================================== */
+
+    .category-body-container {
+      width: auto;
+
+      max-width: 82%;
+
+      min-width: 0;
+
+      height: auto;
+
+      min-height: 58px;
+
+      padding: 8px 12px;
+
+      border-radius: 4px;
+
+      opacity: 0.92;
+
+      box-sizing: border-box;
+
+
+      h2 {
+        width: 100%;
+
+        margin: 0;
+
+        font-size: 17px;
+
+        line-height: 1.15;
+
+        font-weight: 700;
+
+        text-align: center;
+
+        white-space: normal;
+
+        overflow-wrap: break-word;
+
+        word-break: normal;
+      }
+
+
+      p {
+        width: 100%;
+
+        margin: 3px 0 0;
+
+        font-size: 12px;
+
+        line-height: 1.2;
+
+        font-weight: 500;
+
+        text-align: center;
+
+        white-space: normal;
+
+        overflow-wrap: break-word;
+
+        word-break: normal;
+      }
+    }
+  }
+
+
+  /* =======================================================
+     MOBILE HOME BACKGROUND
+  ======================================================= */
+
+  .home-background {
+    width: 100%;
+
+    height: auto;
+
+    min-height: 88.7vh;
+
+    overflow: hidden;
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   450px AND BELOW
+========================================================= */
+
+@media screen and (max-width: 450px) {
+
+  .directory-container {
+    padding: 10px;
+
+    gap: 10px;
+  }
+
+
+  .category-container {
+    width: 100% !important;
+
+    height: 200px;
+
+    border-radius: 11px;
+
+
+    &.large {
+      height: 240px;
+    }
+
+
+    /* =====================================================
+       SMALL PHONE GREY TEXT BOX
+    ===================================================== */
+
+    .category-body-container {
+      width: auto;
+
+      max-width: 80%;
+
+      min-width: 0;
+
+      min-height: 52px;
+
+      padding: 7px 10px;
+
+      border-radius: 4px;
+
+
+      h2 {
+        font-size: 16px;
+
+        line-height: 1.1;
+      }
+
+
+      p {
+        font-size: 11px;
+
+        line-height: 1.15;
+
+        margin-top: 2px;
+      }
+    }
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   360px AND BELOW
+========================================================= */
+
+@media screen and (max-width: 360px) {
+
+  .directory-container {
+    padding: 8px;
+
+    gap: 8px;
+  }
+
+
+  .category-container {
+    height: 185px;
+
+    border-radius: 10px;
+
+
+    &.large {
+      height: 220px;
+    }
+
+
+    /* =====================================================
+       VERY SMALL PHONE GREY TEXT BOX
+    ===================================================== */
+
+    .category-body-container {
+      width: auto;
+
+      max-width: 82%;
+
+      min-width: 0;
+
+      min-height: 48px;
+
+      padding: 6px 9px;
+
+      border-radius: 4px;
+
+
+      h2 {
+        font-size: 15px;
+
+        line-height: 1.1;
+      }
+
+
+      p {
+        font-size: 10px;
+
+        line-height: 1.15;
+
+        margin-top: 2px;
+      }
+    }
+  }
+}
+
+
+/* =========================================================
+   EXTRA SMALL PHONES
+   320px AND BELOW
+========================================================= */
+
+@media screen and (max-width: 320px) {
+
+  .directory-container {
+    padding: 6px;
+
+    gap: 7px;
+  }
+
+
+  .category-container {
+    height: 175px;
+
+    border-radius: 9px;
+
+
+    &.large {
+      height: 205px;
+    }
+
+
+    /* =====================================================
+       EXTRA SMALL PHONE GREY TEXT BOX
+    ===================================================== */
+
+    .category-body-container {
+      width: auto;
+
+      max-width: 85%;
+
+      min-width: 0;
+
+      min-height: 44px;
+
+      padding: 5px 8px;
+
+      border-radius: 4px;
+
+
+      h2 {
+        font-size: 14px;
+
+        line-height: 1.05;
+      }
+
+
+      p {
+        font-size: 10px;
+
+        line-height: 1.1;
+
+        margin-top: 2px;
+      }
+    }
+  }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   PREVENT DESKTOP HOVER EFFECTS
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .category-container {
+
+    &:hover {
+      box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.4);
+
+      .background-image {
+        transform: none;
+
+        transition: none;
+      }
+
+      .category-body-container {
+        opacity: 0.92;
+      }
     }
   }
 }
