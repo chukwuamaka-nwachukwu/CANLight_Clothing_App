@@ -1,4 +1,3 @@
-
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
@@ -17,6 +16,8 @@ export default defineConfig({
       ],
 
       manifest: {
+        id: "/",
+
         name: "CANLight Clothing",
 
         short_name: "CANLight",
@@ -30,35 +31,38 @@ export default defineConfig({
 
         display: "standalone",
 
-        orientation: "portrait",
-
-        scope: "/",
+        orientation: "portrait-primary",
 
         start_url: "/",
+
+        scope: "/",
 
         icons: [
           {
             src: "/pwa-192x192.png",
             sizes: "192x192",
             type: "image/png",
-            purpose: "any",
+            purpose: "any maskable",
           },
 
           {
             src: "/pwa-512x512.png",
             sizes: "512x512",
             type: "image/png",
-            purpose: "any",
+            purpose: "any maskable",
           },
         ],
       },
 
       workbox: {
         navigateFallback: "/index.html",
+
+        cleanupOutdatedCaches: true,
       },
 
       devOptions: {
         enabled: true,
+        type: "module",
       },
     }),
   ],

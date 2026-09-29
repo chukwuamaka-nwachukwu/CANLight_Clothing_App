@@ -1,4 +1,3 @@
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
@@ -13,16 +12,11 @@ import { registerSW } from "virtual:pwa-register";
 =========================================================
 REGISTER CANLIGHT PWA SERVICE WORKER
 =========================================================
-
-This allows CANLight to:
-
-- Be installed as an app
-- Use the PWA application shell
-- Support basic offline loading
-- Automatically detect new versions
 */
 
 registerSW({
+  immediate: true,
+
   onNeedRefresh() {
     console.log(
       "A new version of CANLight is available."

@@ -9,7 +9,7 @@ import { setCurrentUser } from "../../../store/user/user.actions";
 
 import { selectCurrentUser } from "../../../store/user/user.selectors";
 import { selectIsCartOpen, selectCartCount, selectCartItems } from "../../../store/cart/cart.selectors";
-
+import InstallPWA from "../../installPWA";
 import "./navigation.styles.scss";
 
 const Navigation = () => {
@@ -39,6 +39,7 @@ const Navigation = () => {
         </Link>
 
         <div className="nav-links-container">
+          <InstallPWA />
           {currentUser ? (
             <span className="username">
               {currentUser.displayName || currentUser.email}

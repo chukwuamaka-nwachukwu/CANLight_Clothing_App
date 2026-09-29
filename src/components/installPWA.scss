@@ -1,0 +1,83 @@
+/* =========================================================
+   PWA INSTALL BUTTON
+========================================================= */
+
+.install-pwa-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 16px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #111827;
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+}
+
+.install-pwa-button:hover {
+  background: #1f2937;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.install-pwa-button:active {
+  transform: translateY(0);
+
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.install-pwa-button:focus-visible {
+  outline: 2px solid #111827;
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+  .install-pwa-button {
+    padding: 9px 6px;
+    margin-left: 8px;
+    font-size: 13px;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .nav-links-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 6px;
+
+    width: auto;
+    max-width: 100%;
+
+    flex-wrap: nowrap;
+  }
+}

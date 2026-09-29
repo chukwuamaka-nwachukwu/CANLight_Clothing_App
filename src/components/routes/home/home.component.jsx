@@ -5,6 +5,7 @@ import Directory from './../../directory/directory.components';
 
 
 const HomePage = () => {
+
   const categories = [
     { id: 1, title: "Hats", imageUrl: "https://images.unsplash.com/photo-1529958030586-3aae4ca485ff?w=600&auto=format&fit=crop&q=60", route:'shop/hats' },
     { id: 2, title: "Jackets", imageUrl: "https://i.ibb.co/px2tCc3/jackets.png", route:'shop/jackets' },
