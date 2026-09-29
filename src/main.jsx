@@ -1,4 +1,3 @@
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
@@ -9,9 +8,9 @@ import { store } from "./store/store";
 
 import { registerSW } from "virtual:pwa-register";
 
-// =========================================================
-// REGISTER CANLIGHT PWA SERVICE WORKER
-// =========================================================
+/* =========================================================
+   CANLIGHT PWA SERVICE WORKER
+========================================================= */
 
 registerSW({
   immediate: true,
@@ -43,9 +42,9 @@ registerSW({
   },
 });
 
-// =========================================================
-// REACT APPLICATION
-// =========================================================
+/* =========================================================
+   REACT APPLICATION
+========================================================= */
 
 ReactDOM.createRoot(
   document.getElementById("root")

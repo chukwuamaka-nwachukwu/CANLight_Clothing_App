@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import "./installPWA.scss";
 
@@ -11,9 +10,9 @@ const InstallPWA = () => {
     console.log("CANLight PWA INSTALLATION CHECK");
     console.log("========================================");
 
-    // ---------------------------------------------------------
-    // CHECK HTTPS
-    // ---------------------------------------------------------
+    /* =====================================================
+       HTTPS
+    ===================================================== */
 
     console.log(
       "HTTPS:",
@@ -25,9 +24,9 @@ const InstallPWA = () => {
       window.location.href
     );
 
-    // ---------------------------------------------------------
-    // CHECK SERVICE WORKER
-    // ---------------------------------------------------------
+    /* =====================================================
+       SERVICE WORKER
+    ===================================================== */
 
     console.log(
       "Service Worker supported:",
@@ -45,7 +44,7 @@ const InstallPWA = () => {
 
           if (registrations.length === 0) {
             console.warn(
-              "⚠️ No service worker is registered."
+              "⚠️ No service worker is registered yet."
             );
           } else {
             console.log(
@@ -83,9 +82,9 @@ const InstallPWA = () => {
         });
     }
 
-    // ---------------------------------------------------------
-    // CHECK MANIFEST
-    // ---------------------------------------------------------
+    /* =====================================================
+       MANIFEST
+    ===================================================== */
 
     const manifest = document.querySelector(
       'link[rel="manifest"]'
@@ -107,9 +106,9 @@ const InstallPWA = () => {
       );
     }
 
-    // ---------------------------------------------------------
-    // CHECK INSTALLED STATE
-    // ---------------------------------------------------------
+    /* =====================================================
+       INSTALLED STATE
+    ===================================================== */
 
     const checkIfInstalled = () => {
       const standalone =
@@ -128,9 +127,9 @@ const InstallPWA = () => {
 
     checkIfInstalled();
 
-    // ---------------------------------------------------------
-    // BEFORE INSTALL PROMPT
-    // ---------------------------------------------------------
+    /* =====================================================
+       BEFORE INSTALL PROMPT
+    ===================================================== */
 
     const handleBeforeInstallPrompt = (event) => {
       console.log(
@@ -155,9 +154,9 @@ const InstallPWA = () => {
       handleBeforeInstallPrompt
     );
 
-    // ---------------------------------------------------------
-    // APP INSTALLED
-    // ---------------------------------------------------------
+    /* =====================================================
+       APP INSTALLED
+    ===================================================== */
 
     const handleAppInstalled = () => {
       console.log(
@@ -181,9 +180,9 @@ const InstallPWA = () => {
       handleAppInstalled
     );
 
-    // ---------------------------------------------------------
-    // CLEANUP
-    // ---------------------------------------------------------
+    /* =====================================================
+       CLEANUP
+    ===================================================== */
 
     return () => {
       window.removeEventListener(
@@ -198,9 +197,9 @@ const InstallPWA = () => {
     };
   }, []);
 
-  // ---------------------------------------------------------
-  // INSTALL BUTTON
-  // ---------------------------------------------------------
+  /* =====================================================
+     INSTALL
+  ===================================================== */
 
   const handleInstallClick = async () => {
     console.log(
@@ -215,7 +214,7 @@ const InstallPWA = () => {
     if (!installPrompt) {
       alert(
         "Chrome has not made CANLight Clothing available for automatic installation yet.\n\n" +
-          "Please check the browser console for the PWA diagnostic information."
+          "Make sure you are using HTTPS and that the PWA requirements have been met."
       );
 
       return;
@@ -245,17 +244,17 @@ const InstallPWA = () => {
     }
   };
 
-  // ---------------------------------------------------------
-  // HIDE AFTER INSTALLATION
-  // ---------------------------------------------------------
+  /* =====================================================
+     HIDE WHEN INSTALLED
+  ===================================================== */
 
   if (isInstalled) {
     return null;
   }
 
-  // ---------------------------------------------------------
-  // ALWAYS SHOW BUTTON
-  // ---------------------------------------------------------
+  /* =====================================================
+     INSTALL BUTTON
+  ===================================================== */
 
   return (
     <button
@@ -264,7 +263,9 @@ const InstallPWA = () => {
       onClick={handleInstallClick}
       aria-label="Install CANLight Clothing"
     >
-      📱 Install CANLight<br />Clothing
+      📱 Install CANLight
+      <br />
+      Clothing
     </button>
   );
 };

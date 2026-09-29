@@ -1,4 +1,3 @@
-
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
@@ -10,11 +9,20 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
 
+      /* =====================================================
+         STATIC FILES TO INCLUDE
+      ===================================================== */
+
       includeAssets: [
-        "canlight.ico",
-        "pwa-192x192.png",
-        "pwa-512x512.png",
+        "favicon.ico",
+        "icons/icon-192.png",
+        "icons/icon-512.png",
+        "icons/icon-512-maskable.png",
       ],
+
+      /* =====================================================
+         PWA MANIFEST
+      ===================================================== */
 
       manifest: {
         id: "/",
@@ -26,42 +34,70 @@ export default defineConfig({
         description:
           "CANLight Clothing — fashion that makes uniqueness special.",
 
-        theme_color: "#000000",
+        start_url: "/",
 
-        background_color: "#ffffff",
+        scope: "/",
 
         display: "standalone",
 
         orientation: "portrait-primary",
 
-        start_url: "/",
+        background_color: "#ffffff",
 
-        scope: "/",
+        theme_color: "#111827",
+
+        lang: "en",
+
+        categories: [
+          "shopping",
+          "fashion",
+        ],
 
         icons: [
           {
-            src: "/pwa-192x192.png",
+            src: "/icons/icon-192.png",
             sizes: "192x192",
             type: "image/png",
-            purpose: "any maskable",
+            purpose: "any",
           },
 
           {
-            src: "/pwa-512x512.png",
+            src: "/icons/icon-512.png",
             sizes: "512x512",
             type: "image/png",
-            purpose: "any maskable",
+            purpose: "any",
+          },
+
+          {
+            src: "/icons/icon-512-maskable.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "maskable",
           },
         ],
       },
 
+      /* =====================================================
+         WORKBOX
+      ===================================================== */
+
       workbox: {
         navigateFallback: "/index.html",
+
         cleanupOutdatedCaches: true,
+
+        globPatterns: [
+          "**/*.{js,css,html,ico,png,svg,webp,jpg,jpeg}"
+        ],
       },
+
+      /* =====================================================
+         DEVELOPMENT
+      ===================================================== */
 
       devOptions: {
         enabled: true,
+
         type: "module",
       },
     }),

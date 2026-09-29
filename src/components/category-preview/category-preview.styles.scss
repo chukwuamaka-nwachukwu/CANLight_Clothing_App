@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family:'Open Sans',sans-serif;
 }
 
 
@@ -176,24 +177,28 @@
   }
 
 
-  /* =======================================================
-     PRODUCT CARD INSIDE CATEGORY PREVIEW
-  ======================================================= */
+ /* =========================================================
+   PRODUCT CARD INSIDE CATEGORY PREVIEW
+========================================================= */
 
-  .category-slide > .product-card-container {
-    display: flex;
+.category-slide > .product-card-container {
+  display: flex;
 
-    width: 100% !important;
+  width: 100% !important;
 
-    min-width: 0 !important;
+  min-width: 0 !important;
 
-    max-width: 100% !important;
+  max-width: 100% !important;
 
-    flex:
-      1 1 auto;
+  min-height: 100% !important;
 
-    box-sizing: border-box;
-  }
+  height: auto !important;
+
+  flex:
+    1 1 auto;
+
+  box-sizing: border-box;
+}
 }
 
 
