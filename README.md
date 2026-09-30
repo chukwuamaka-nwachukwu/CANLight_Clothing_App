@@ -1,6 +1,6 @@
 **CANLight Clothing App**
 -------------------------------
-
+(Link --> https://canlightclothing.chukwuamakanwachukwu.com/)
 
 CANLight Clothing App is a modern e‑commerce platform designed to showcase a stylish clothing brand. It features user authentication, product category browsing, and a responsive interface built with a sleek Dark Slate + Emerald theme.
 
