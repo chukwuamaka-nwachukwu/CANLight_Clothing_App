@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1790762090254" clover="3.2.0">
-  <project timestamp="1790762090254" name="All files">
-    <metrics statements="28" coveredstatements="22" conditionals="8" coveredconditionals="0" methods="8" coveredmethods="7" elements="44" coveredelements="29" complexity="0" loc="28" ncloc="28" packages="3" files="4" classes="4"/>
+<coverage generated="1790775338173" clover="3.2.0">
+  <project timestamp="1790775338174" name="All files">
+    <metrics statements="36" coveredstatements="30" conditionals="8" coveredconditionals="0" methods="11" coveredmethods="10" elements="55" coveredelements="40" complexity="0" loc="36" ncloc="36" packages="5" files="6" classes="6"/>
+    <package name="components.button">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="button.component.jsx" path="C:\Users\Chukw\OneDrive\Documents\REACT_CLASS\CANLight_Clothing\src\components\button\button.component.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.product-card">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="product-card.component.jsx" path="C:\Users\Chukw\OneDrive\Documents\REACT_CLASS\CANLight_Clothing\src\components\product-card\product-card.component.jsx">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+      </file>
+    </package>
     <package name="reducers">
       <metrics statements="9" coveredstatements="3" conditionals="8" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="categories.reducer.js" path="C:\Users\Chukw\OneDrive\Documents\REACT_CLASS\CANLight_Clothing\src\reducers\categories.reducer.js">
